@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import CodeBlock from "@/components/CodeBlock";
-import { ChevronLeft, ChevronRight, CheckCircle2, AlertCircle, Lightbulb } from "lucide-react";
+import { ChevronLeft, ChevronRight, CheckCircle2, AlertCircle, Lightbulb, Trash2 } from "lucide-react";
 import { useRoute } from "wouter";
 import { Link } from "wouter";
+import { useProgress } from "@/contexts/ProgressContext";
+import { useState, useEffect } from "react";
 
 interface ProjectData {
   id: string;
@@ -1185,6 +1187,32 @@ export default function ProjectDetail() {
   const [, params] = useRoute("/project/:id");
   const projectId = params?.id;
   const project = projectId ? projectsData[projectId] : null;
+  const progress = useProgress();
+  const [projectStarted, setProjectStarted] = useState(false);
+
+  useEffect(() => {
+    if (projectId) {
+      const proj = progress.getProjectProgress(projectId);
+      setProjectStarted(proj?.started || false);
+    }
+  }, [projectId, progress]);
+
+  const handleStartProject = () => {
+    if (projectId) {
+      progress.startProject(projectId);
+      setProjectStarted(true);
+    }
+  };
+
+  const handleResetProgress = () => {
+    if (projectId && confirm("Tem certeza que deseja resetar o progresso deste projeto?")) {
+      progress.resetProjectProgress(projectId);
+      setProjectStarted(false);
+    }
+  };
+
+  const tasksCompleted = projectId ? progress.getTasksCompleted(projectId) : 0;
+  const challengesCompleted = projectId ? progress.getChallengesCompleted(projectId) : 0;
 
   if (!project) {
     return (
@@ -1308,9 +1336,22 @@ export default function ProjectDetail() {
                 {project.tasks.map((task) => (
                   <div key={task.id} className="p-4 bg-gray-50 rounded-lg border border-gray-200">
                     <div className="flex items-start gap-3">
-                      <span className="text-lg font-bold text-blue-600 flex-shrink-0">{task.id}</span>
-                      <div>
-                        <h3 className="font-semibold text-gray-900">{task.title}</h3>
+                      <button
+                        onClick={() => projectId && progress.toggleTask(projectId, task.id)}
+                        className="flex-shrink-0 mt-1"
+                      >
+                        {projectId && progress.isTaskCompleted(projectId, task.id) ? (
+                          <CheckCircle2 className="w-6 h-6 text-green-600 hover:text-green-700" />
+                        ) : (
+                          <div className="w-6 h-6 rounded-full border-2 border-gray-300 hover:border-blue-600 transition-colors" />
+                        )}
+                      </button>
+                      <div className="flex-1">
+                        <h3 className={`font-semibold ${
+                          projectId && progress.isTaskCompleted(projectId, task.id)
+                            ? "text-gray-500 line-through"
+                            : "text-gray-900"
+                        }`}>{task.title}</h3>
                         <p className="text-gray-600 text-sm mt-1">{task.description}</p>
                       </div>
                     </div>
@@ -1335,9 +1376,27 @@ export default function ProjectDetail() {
                 {project.challenges.map((challenge) => (
                   <div key={challenge.id} className="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
                     <div className="flex items-start justify-between mb-2">
-                      <h3 className="font-semibold text-gray-900">{challenge.title}</h3>
+                      <div className="flex items-start gap-3 flex-1">
+                        <button
+                          onClick={() => projectId && progress.toggleChallenge(projectId, challenge.id)}
+                          className="flex-shrink-0 mt-1"
+                        >
+                          {projectId && progress.isChallengeCompleted(projectId, challenge.id) ? (
+                            <CheckCircle2 className="w-5 h-5 text-green-600 hover:text-green-700" />
+                          ) : (
+                            <div className="w-5 h-5 rounded-full border-2 border-yellow-400 hover:border-yellow-600 transition-colors" />
+                          )}
+                        </button>
+                        <div>
+                          <h3 className={`font-semibold ${
+                            projectId && progress.isChallengeCompleted(projectId, challenge.id)
+                              ? "text-gray-500 line-through"
+                              : "text-gray-900"
+                          }`}>{challenge.title}</h3>
+                        </div>
+                      </div>
                       <span
-                        className={`text-xs font-semibold px-2 py-1 rounded ${
+                        className={`text-xs font-semibold px-2 py-1 rounded flex-shrink-0 ${
                           challenge.difficulty === "Iniciante"
                             ? "bg-green-100 text-green-700"
                             : challenge.difficulty === "Intermediário"
@@ -1406,9 +1465,23 @@ export default function ProjectDetail() {
               </Card>
 
               {/* Start Button */}
-              <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 text-lg transition-colors duration-200">
-                Começar Projeto
-              </Button>
+              {!projectStarted ? (
+                <Button
+                  onClick={handleStartProject}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 text-lg transition-colors duration-200"
+                >
+                  Começar Projeto
+                </Button>
+              ) : (
+                <Button
+                  onClick={handleResetProgress}
+                  variant="outline"
+                  className="w-full py-6 text-lg transition-colors duration-200"
+                >
+                  <Trash2 className="w-4 h-4 mr-2" />
+                  Resetar Progresso
+                </Button>
+              )}
 
               {/* Tips */}
               <Card className="p-6 border border-gray-200">
@@ -1422,12 +1495,57 @@ export default function ProjectDetail() {
               </Card>
 
               {/* Progress */}
-              <Card className="p-6 border border-gray-200">
+              <Card className="p-6 border border-gray-200 bg-gradient-to-br from-green-50 to-green-100">
                 <h3 className="font-semibold text-gray-900 mb-4">Seu Progresso</h3>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-600 mb-2">0%</div>
-                  <p className="text-sm text-gray-600">Não iniciado</p>
-                </div>
+                {projectStarted ? (
+                  <div className="space-y-4">
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm text-gray-700">Tarefas</span>
+                        <span className="font-semibold text-gray-900">{tasksCompleted}/{project.tasks.length}</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div
+                          className="bg-green-600 h-2 rounded-full transition-all duration-300"
+                          style={{
+                            width: `${project.tasks.length ? (tasksCompleted / project.tasks.length) * 100 : 0}%`,
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm text-gray-700">Desafios</span>
+                        <span className="font-semibold text-gray-900">{challengesCompleted}/{project.challenges.length}</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div
+                          className="bg-yellow-600 h-2 rounded-full transition-all duration-300"
+                          style={{
+                            width: `${project.challenges.length ? (challengesCompleted / project.challenges.length) * 100 : 0}%`,
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div className="pt-2 border-t border-green-200">
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-green-700 mb-1">
+                          {Math.round(
+                            ((tasksCompleted + challengesCompleted) /
+                              ((project.tasks.length || 0) + (project.challenges.length || 0))) *
+                              100
+                          )}%
+                        </div>
+                        <p className="text-xs text-gray-600">Projeto Completo</p>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-gray-400 mb-2">-</div>
+                    <p className="text-sm text-gray-600">Clique em "Começar Projeto" para rastrear seu progresso</p>
+                  </div>
+                )}
               </Card>
             </div>
           </aside>
