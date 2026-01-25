@@ -1855,29 +1855,19 @@ public class Main {
   }
 };
 
-export function getConceptById(id: string): Concept | undefined {
-  return conceptsDataExpanded[id];
-}
+// Removido - usar conceptsData.ts
 
-export function getAllConcepts(): Concept[] {
-  return Object.values(conceptsDataExpanded);
-}
+// Removido - usar conceptsData.ts
 
-export function getConceptsByDifficulty(difficulty: 'beginner' | 'intermediate' | 'advanced'): Concept[] {
-  return Object.values(conceptsDataExpanded).filter(c => c.difficulty === difficulty);
-}
+// Removido - usar conceptsData.ts
 
-export function searchConcepts(query: string): Concept[] {
-  const lowerQuery = query.toLowerCase();
-  return Object.values(conceptsDataExpanded).filter(c => 
-    c.title.toLowerCase().includes(lowerQuery) ||
-    c.description.toLowerCase().includes(lowerQuery)
-  );
-}
+// Removido - usar conceptsData.ts
 
 import { conceptsDataAdvanced } from './conceptsDataAdvanced';
+import { conceptsDataAllTrails } from './conceptsDataAllTrails';
 
 export const allConceptsData: Record<string, Concept> = {
   ...conceptsDataExpanded,
-  ...conceptsDataAdvanced
+  ...conceptsDataAdvanced,
+  ...conceptsDataAllTrails
 };
