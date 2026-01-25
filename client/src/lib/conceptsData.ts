@@ -33,8 +33,14 @@ export interface Resource {
 }
 
 import { conceptsDataExpanded, allConceptsData } from './conceptsDataExpanded';
+import { conceptsDataAdvanced } from './conceptsDataAdvanced';
+import { conceptsDataAllTrails } from './conceptsDataAllTrails';
 
-export const conceptsData: Record<string, Concept> = allConceptsData;
+export const conceptsData: Record<string, Concept> = {
+  ...allConceptsData,
+  ...conceptsDataAdvanced,
+  ...conceptsDataAllTrails
+};
 
 // Mantendo a estrutura original para compatibilidade
 export const conceptsDataOriginal: Record<string, Concept> = {

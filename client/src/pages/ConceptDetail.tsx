@@ -1,4 +1,4 @@
-import { useParams, useLocation } from 'wouter';
+import { useRoute } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -6,10 +6,12 @@ import { ArrowLeft, Copy, Check, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 import { getConceptById, getRelatedConcepts } from '@/lib/conceptsData';
 import CodeBlock from '@/components/CodeBlock';
+import { useNavigationHistory } from '@/hooks/useNavigationHistory';
 
 export default function ConceptDetail() {
-  const { conceptId } = useParams<{ conceptId: string }>();
-  const [, navigate] = useLocation();
+  const [, params] = useRoute("/concept/:conceptId");
+  const conceptId = params?.conceptId;
+  const { goBack } = useNavigationHistory();
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
   const concept = conceptId ? getConceptById(conceptId) : undefined;
@@ -21,7 +23,7 @@ export default function ConceptDetail() {
         <div className="container max-w-4xl mx-auto">
           <Button
             variant="ghost"
-            onClick={() => navigate('/')}
+            onClick={goBack}
             className="mb-4"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -32,7 +34,7 @@ export default function ConceptDetail() {
             <p className="text-muted-foreground mb-6">
               O conceito que você está procurando não existe.
             </p>
-            <Button onClick={() => navigate('/')}>Voltar ao Início</Button>
+            <Button onClick={goBack}>Voltar</Button>
           </Card>
         </div>
       </div>
@@ -63,7 +65,7 @@ export default function ConceptDetail() {
         {/* Header */}
         <Button
           variant="ghost"
-          onClick={() => navigate('/')}
+          onClick={goBack}
           className="mb-6"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
@@ -206,7 +208,7 @@ export default function ConceptDetail() {
               {relatedConcepts.map((relatedConcept) => (
                 <button
                   key={relatedConcept.id}
-                  onClick={() => navigate(`/concept/${relatedConcept.id}`)}
+                  onClick={() => window.location.href = `/concept/${relatedConcept.id}`}
                   className="p-4 border rounded-lg hover:bg-muted transition-colors text-left"
                 >
                   <h3 className="font-semibold mb-2">{relatedConcept.title}</h3>

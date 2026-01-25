@@ -1,4 +1,5 @@
 import { useRoute, Link } from 'wouter';
+import { useNavigationHistory } from '@/hooks/useNavigationHistory';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -11,6 +12,7 @@ import ExternalIntegration from '@/components/ExternalIntegration';
 export default function PracticalProjectDetail() {
   const [, params] = useRoute("/practical-project/:projectId");
   const projectId = params?.projectId;
+  const { goBack } = useNavigationHistory();
   const [completedTasks, setCompletedTasks] = useState<Set<string>>(new Set());
 
   const project = projectId ? getProjectById(projectId) : undefined;
@@ -44,17 +46,13 @@ export default function PracticalProjectDetail() {
     return (
       <div className="min-h-screen bg-background p-4">
         <div className="container max-w-4xl mx-auto">
-          <Link href="/projects">
-            <Button variant="ghost" className="mb-4">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Voltar
-            </Button>
-          </Link>
+          <Button variant="ghost" className="mb-4" onClick={goBack}>
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Voltar
+          </Button>
           <Card className="p-8 text-center">
             <h1 className="text-2xl font-bold mb-4">Projeto não encontrado</h1>
-            <Link href="/projects">
-              <Button>Voltar aos Projetos</Button>
-            </Link>
+            <Button onClick={goBack}>Voltar</Button>
           </Card>
         </div>
       </div>
@@ -83,12 +81,10 @@ export default function PracticalProjectDetail() {
     <div className="min-h-screen bg-background">
       <div className="container max-w-4xl mx-auto p-4">
         {/* Header */}
-        <Link href="/projects">
-          <Button variant="ghost" className="mb-6">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Voltar aos Projetos
-          </Button>
-        </Link>
+        <Button variant="ghost" className="mb-6" onClick={goBack}>
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          Voltar
+        </Button>
 
         {/* Título e Metadados */}
         <div className="mb-8">

@@ -1,15 +1,16 @@
-import { useRoute } from 'wouter';
+import { useRoute, Link } from 'wouter';
+import { useNavigationHistory } from '@/hooks/useNavigationHistory';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, BookOpen, Target, Clock, Zap, ExternalLink } from 'lucide-react';
 import { getStageById, getStagesByTrail } from '@/lib/stagesData';
-import { Link } from 'wouter';
 
 
 export default function StageDetail() {
   const [, params] = useRoute("/stage/:stageId");
   const stageId = params?.stageId;
+  const { goBack } = useNavigationHistory();
 
   const stage = stageId ? getStageById(stageId) : undefined;
   const allStages = stage ? getStagesByTrail(stage.trailId) : [];
@@ -18,20 +19,16 @@ export default function StageDetail() {
     return (
       <div className="min-h-screen bg-white dark:bg-slate-950 p-4">
         <div className="container max-w-4xl mx-auto">
-          <Link href="/">
-            <Button variant="ghost" className="mb-4">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Voltar
-            </Button>
-          </Link>
+          <Button variant="ghost" className="mb-4" onClick={goBack}>
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Voltar
+          </Button>
           <Card className="p-8 text-center">
             <h1 className="text-2xl font-bold mb-4">Estágio não encontrado</h1>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
               O estágio que você está procurando não existe.
             </p>
-            <Link href="/">
-              <Button>Voltar ao Início</Button>
-            </Link>
+            <Button onClick={goBack}>Voltar</Button>
           </Card>
         </div>
       </div>
@@ -51,12 +48,10 @@ export default function StageDetail() {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 p-4">
       <div className="container max-w-4xl mx-auto">
-        <Link href="/">
-          <Button variant="ghost" className="mb-6">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Voltar
-          </Button>
-        </Link>
+        <Button variant="ghost" className="mb-6" onClick={goBack}>
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          Voltar
+        </Button>
 
         {/* Header */}
         <div className="mb-8">

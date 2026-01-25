@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLocation } from 'wouter';
+import { useNavigationHistory } from '@/hooks/useNavigationHistory';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -48,7 +49,7 @@ const difficultyColors = {
 
 export default function Projects() {
   const { theme, toggleTheme } = useTheme();
-  const [, navigate] = useLocation();
+  const { goBack } = useNavigationHistory();
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>('java');
   const [selectedType, setSelectedType] = useState<ProjectType | 'all'>('all');
 
@@ -61,7 +62,7 @@ export default function Projects() {
   }
 
   const renderProjectCard = (project: PracticalProject) => (
-    <Card key={project.id} className="p-6 hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate(`/project/${project.id}`)}>
+    <Card key={project.id} className="p-6 hover:shadow-lg transition-shadow cursor-pointer" onClick={() => window.location.href = `/practical-project/${project.id}`}>
       <div className="flex items-start justify-between mb-3">
         <h3 className="text-lg font-bold">{project.title}</h3>
         <Badge className={typeColors[project.type]}>
@@ -119,7 +120,7 @@ export default function Projects() {
         {/* Header */}
         <Button
           variant="ghost"
-          onClick={() => navigate('/')}
+          onClick={goBack}
           className="mb-6"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
