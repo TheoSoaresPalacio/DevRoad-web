@@ -1,4 +1,4 @@
-import { useParams, useLocation } from 'wouter';
+import { useRoute, Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -9,8 +9,8 @@ import { getProjectById } from '@/lib/projectsData';
 import ExternalIntegration from '@/components/ExternalIntegration';
 
 export default function PracticalProjectDetail() {
-  const { projectId } = useParams<{ projectId: string }>();
-  const [, navigate] = useLocation();
+  const [, params] = useRoute("/practical-project/:projectId");
+  const projectId = params?.projectId;
   const [completedTasks, setCompletedTasks] = useState<Set<string>>(new Set());
 
   const project = projectId ? getProjectById(projectId) : undefined;
@@ -44,13 +44,17 @@ export default function PracticalProjectDetail() {
     return (
       <div className="min-h-screen bg-background p-4">
         <div className="container max-w-4xl mx-auto">
-          <Button variant="ghost" onClick={() => navigate('/projects')} className="mb-4">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Voltar
-          </Button>
+          <Link href="/projects">
+            <Button variant="ghost" className="mb-4">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Voltar
+            </Button>
+          </Link>
           <Card className="p-8 text-center">
             <h1 className="text-2xl font-bold mb-4">Projeto não encontrado</h1>
-            <Button onClick={() => navigate('/projects')}>Voltar aos Projetos</Button>
+            <Link href="/projects">
+              <Button>Voltar aos Projetos</Button>
+            </Link>
           </Card>
         </div>
       </div>
@@ -79,10 +83,12 @@ export default function PracticalProjectDetail() {
     <div className="min-h-screen bg-background">
       <div className="container max-w-4xl mx-auto p-4">
         {/* Header */}
-        <Button variant="ghost" onClick={() => navigate('/projects')} className="mb-6">
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Voltar aos Projetos
-        </Button>
+        <Link href="/projects">
+          <Button variant="ghost" className="mb-6">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Voltar aos Projetos
+          </Button>
+        </Link>
 
         {/* Título e Metadados */}
         <div className="mb-8">

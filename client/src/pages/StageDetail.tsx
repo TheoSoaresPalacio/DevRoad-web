@@ -1,37 +1,37 @@
-import { useParams, useLocation } from 'wouter';
+import { useRoute } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, BookOpen, Target, Clock, Zap, ExternalLink } from 'lucide-react';
 import { getStageById, getStagesByTrail } from '@/lib/stagesData';
+import { Link } from 'wouter';
 
 
 export default function StageDetail() {
-  const { stageId } = useParams<{ stageId: string }>();
-  const [, navigate] = useLocation();
-
+  const [, params] = useRoute("/stage/:stageId");
+  const stageId = params?.stageId;
 
   const stage = stageId ? getStageById(stageId) : undefined;
   const allStages = stage ? getStagesByTrail(stage.trailId) : [];
 
   if (!stage) {
     return (
-      <div className="min-h-screen bg-background dark:bg-slate-950 p-4">
+      <div className="min-h-screen bg-white dark:bg-slate-950 p-4">
         <div className="container max-w-4xl mx-auto">
-          <Button
-            variant="ghost"
-            onClick={() => navigate('/')}
-            className="mb-4"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Voltar
-          </Button>
+          <Link href="/">
+            <Button variant="ghost" className="mb-4">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Voltar
+            </Button>
+          </Link>
           <Card className="p-8 text-center">
             <h1 className="text-2xl font-bold mb-4">Estágio não encontrado</h1>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-gray-600 dark:text-gray-400 mb-6">
               O estágio que você está procurando não existe.
             </p>
-            <Button onClick={() => navigate('/')}>Voltar ao Início</Button>
+            <Link href="/">
+              <Button>Voltar ao Início</Button>
+            </Link>
           </Card>
         </div>
       </div>
@@ -49,16 +49,14 @@ export default function StageDetail() {
   const nextStage = currentIndex < allStages.length - 1 ? allStages[currentIndex + 1] : null;
 
   return (
-    <div className="min-h-screen bg-background dark:bg-slate-950 p-4">
+    <div className="min-h-screen bg-white dark:bg-slate-950 p-4">
       <div className="container max-w-4xl mx-auto">
-        <Button
-          variant="ghost"
-          onClick={() => navigate('/')}
-          className="mb-6"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Voltar
-        </Button>
+        <Link href="/">
+          <Button variant="ghost" className="mb-6">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Voltar
+          </Button>
+        </Link>
 
         {/* Header */}
         <div className="mb-8">
@@ -73,11 +71,11 @@ export default function StageDetail() {
             </Badge>
           </div>
           <h1 className="text-4xl font-bold mb-2">{stage.title}</h1>
-          <p className="text-xl text-muted-foreground">{stage.description}</p>
+          <p className="text-xl text-gray-600 dark:text-gray-400">{stage.description}</p>
         </div>
 
         {/* Objetivos */}
-        <Card className="p-6 mb-6 bg-card dark:bg-slate-900">
+        <Card className="p-6 mb-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-2 mb-4">
             <Target className="w-5 h-5 text-blue-500" />
             <h2 className="text-2xl font-bold">Objetivos de Aprendizado</h2>
@@ -93,27 +91,24 @@ export default function StageDetail() {
         </Card>
 
         {/* Tópicos */}
-        <Card className="p-6 mb-6 bg-card dark:bg-slate-900">
+        <Card className="p-6 mb-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-2 mb-4">
             <BookOpen className="w-5 h-5 text-purple-500" />
             <h2 className="text-2xl font-bold">Tópicos Abordados</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {stage.topics.map((topic, idx) => (
-              <Button
-                key={idx}
-                variant="outline"
-                className="justify-start"
-                onClick={() => navigate(`/concept/${topic}`)}
-              >
-                {topic}
-              </Button>
+              <Link key={idx} href={`/concept/${topic}`}>
+                <Button variant="outline" className="justify-start w-full">
+                  {topic}
+                </Button>
+              </Link>
             ))}
           </div>
         </Card>
 
         {/* Conteúdo Principal */}
-        <Card className="p-6 mb-6 bg-card dark:bg-slate-900">
+        <Card className="p-6 mb-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700">
           <div className="prose dark:prose-invert max-w-none">
             {stage.content.split('\n').map((line, idx) => {
               if (line.startsWith('## ')) {
@@ -138,14 +133,14 @@ export default function StageDetail() {
 
         {/* Projetos */}
         {stage.projects.length > 0 && (
-          <Card className="p-6 mb-6 bg-card dark:bg-slate-900">
+          <Card className="p-6 mb-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-2 mb-4">
               <Zap className="w-5 h-5 text-yellow-500" />
               <h2 className="text-2xl font-bold">Projetos Práticos</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {stage.projects.map((project, idx) => (
-                <Card key={idx} className="p-4 bg-slate-50 dark:bg-slate-800">
+                <Card key={idx} className="p-4 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-gray-700">
                   <h3 className="font-bold mb-2">{project}</h3>
                   <Button variant="outline" size="sm" className="w-full">
                     Ver Detalhes
@@ -158,7 +153,7 @@ export default function StageDetail() {
 
         {/* Recursos */}
         {stage.resources.length > 0 && (
-          <Card className="p-6 mb-6 bg-card dark:bg-slate-900">
+          <Card className="p-6 mb-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700">
             <h2 className="text-2xl font-bold mb-4">Recursos Recomendados</h2>
             <div className="space-y-3">
               {stage.resources.map((resource, idx) => (
@@ -167,11 +162,11 @@ export default function StageDetail() {
                   href={resource.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 border rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition"
+                  className="flex items-center justify-between p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 transition"
                 >
                   <div>
                     <p className="font-bold">{resource.title}</p>
-                    <p className="text-sm text-muted-foreground capitalize">{resource.type}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 capitalize">{resource.type}</p>
                   </div>
                   <ExternalLink className="w-4 h-4" />
                 </a>
@@ -183,21 +178,18 @@ export default function StageDetail() {
         {/* Navegação entre estágios */}
         <div className="flex gap-4 mb-8">
           {previousStage && (
-            <Button
-              variant="outline"
-              onClick={() => navigate(`/stage/${previousStage.id}`)}
-              className="flex-1"
-            >
-              ← Estágio Anterior
-            </Button>
+            <Link href={`/stage/${previousStage.id}`} className="flex-1">
+              <Button variant="outline" className="w-full">
+                ← Estágio Anterior
+              </Button>
+            </Link>
           )}
           {nextStage && (
-            <Button
-              onClick={() => navigate(`/stage/${nextStage.id}`)}
-              className="flex-1"
-            >
-              Próximo Estágio →
-            </Button>
+            <Link href={`/stage/${nextStage.id}`} className="flex-1">
+              <Button className="w-full">
+                Próximo Estágio →
+              </Button>
+            </Link>
           )}
         </div>
       </div>

@@ -198,7 +198,7 @@ export default function Home() {
                     key={stage.id}
                     className={`p-6 transition-all duration-300 ${theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border hover:shadow-lg`}
                   >
-                    <Link href={`/project/${stage.id}`}>
+                    <Link href={`/stage/${selectedTrailId}-stage-${stage.id + 1}`}>
                       <div className="cursor-pointer">
                         <div className="flex items-center justify-between mb-3">
                           <h3 className={`font-bold transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
