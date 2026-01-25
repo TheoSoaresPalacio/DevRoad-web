@@ -11,6 +11,7 @@ import AchievementNotification from "./components/AchievementNotification";
 import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetail";
 import Achievements from "./pages/Achievements";
+import ConceptDetail from "./pages/ConceptDetail";
 
 
 function Router() {
@@ -18,6 +19,7 @@ function Router() {
     <Switch>
       <Route path={"/"} component={Home} />
       <Route path={"/project/:id"} component={ProjectDetail} />
+      <Route path={"/concept/:conceptId"} component={ConceptDetail} />
       <Route path={"/achievements"} component={Achievements} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
