@@ -1,5 +1,5 @@
 import React from "react";
-import { Zap, Code2, Database, Settings, BookOpen, GitBranch, Layers, Globe, Users, Headphones, FileText, Briefcase, Calculator, TrendingUp } from "lucide-react";
+import { Zap, Code2, Database, Settings, BookOpen, GitBranch, Layers, Globe, Users, Headphones, FileText, Briefcase, Calculator, TrendingUp, Palette, Workflow } from "lucide-react";
 
 export interface Project {
   id: string;
@@ -869,8 +869,268 @@ export const mathTrail: Trail = {
   ],
 };
 
+// TRILHA 5: FRONT-END
+export const frontendTrail: Trail = {
+  id: "frontend",
+  name: "Front-End: HTML, CSS, JavaScript e React",
+  description: "Domine desenvolvimento front-end moderno com React e crie interfaces web profissionais",
+  duration: "20-24 semanas",
+  difficulty: "Iniciante → Avançado",
+  color: "#FF6B6B",
+  iconName: "Palette",
+  stages: [
+    {
+      id: 0,
+      title: "Fundamentos Web",
+      description: "HTML, CSS e conceitos web fundamentais",
+      difficulty: "Iniciante",
+      concepts: ["HTML Semântico", "CSS Box Model", "Responsividade", "Acessibilidade"],
+      projects: [
+        { id: "fe-0.1", name: "Página Pessoal", description: "Crie página HTML/CSS", tasks: 4, completed: 0 },
+        { id: "fe-0.2", name: "Portfólio Estático", description: "Construa portfólio responsivo", tasks: 5, completed: 0 }
+      ],
+      color: "#FF6B6B",
+      iconName: "Palette"
+    },
+    {
+      id: 1,
+      title: "CSS Avançado",
+      description: "Flexbox, Grid, Animações e SASS",
+      difficulty: "Iniciante",
+      concepts: ["Flexbox", "CSS Grid", "Animações", "SASS/SCSS"],
+      projects: [
+        { id: "fe-1.1", name: "Site Responsivo", description: "Site em todos os dispositivos", tasks: 5, completed: 0 },
+        { id: "fe-1.2", name: "Componentes CSS", description: "Biblioteca de componentes", tasks: 4, completed: 0 }
+      ],
+      color: "#FF8C42",
+      iconName: "Palette"
+    },
+    {
+      id: 2,
+      title: "JavaScript Fundamentals",
+      description: "Sintaxe, tipos, funções e objetos",
+      difficulty: "Iniciante",
+      concepts: ["Variáveis", "Tipos de Dados", "Funções", "Objetos e Arrays"],
+      projects: [
+        { id: "fe-2.1", name: "Calculadora", description: "Calculadora interativa", tasks: 4, completed: 0 },
+        { id: "fe-2.2", name: "To-Do List", description: "Aplicativo de tarefas", tasks: 5, completed: 0 }
+      ],
+      color: "#FFD93D",
+      iconName: "Code2"
+    },
+    {
+      id: 3,
+      title: "DOM e Eventos",
+      description: "Manipulação do DOM, eventos e Fetch API",
+      difficulty: "Intermediário",
+      concepts: ["DOM API", "Event Listeners", "Async/Await", "Fetch API"],
+      projects: [
+        { id: "fe-3.1", name: "Galeria Interativa", description: "Galeria com manipulação de DOM", tasks: 5, completed: 0 },
+        { id: "fe-3.2", name: "App de Clima", description: "Consumir API de clima", tasks: 5, completed: 0 }
+      ],
+      color: "#6BCB77",
+      iconName: "Zap"
+    },
+    {
+      id: 4,
+      title: "ES6+ e Programação Avançada",
+      description: "Classes, módulos, programação funcional e testes",
+      difficulty: "Intermediário",
+      concepts: ["Classes ES6", "Módulos", "Programação Funcional", "Jest"],
+      projects: [
+        { id: "fe-4.1", name: "Biblioteca JS", description: "Biblioteca com módulos", tasks: 5, completed: 0 },
+        { id: "fe-4.2", name: "Testes Unitários", description: "Aplicativo com testes", tasks: 4, completed: 0 }
+      ],
+      color: "#4D96FF",
+      iconName: "Code2"
+    },
+    {
+      id: 5,
+      title: "React Fundamentals",
+      description: "Componentes, hooks e state management",
+      difficulty: "Intermediário",
+      concepts: ["JSX", "Componentes", "Hooks", "State Management"],
+      projects: [
+        { id: "fe-5.1", name: "To-Do com React", description: "To-do list em React", tasks: 5, completed: 0 },
+        { id: "fe-5.2", name: "Dashboard", description: "Dashboard com múltiplos componentes", tasks: 6, completed: 0 }
+      ],
+      color: "#61DAFB",
+      iconName: "Code2"
+    },
+    {
+      id: 6,
+      title: "React Avançado",
+      description: "Roteamento, Redux, APIs e autenticação",
+      difficulty: "Avançado",
+      concepts: ["React Router", "Redux", "React Query", "Autenticação"],
+      projects: [
+        { id: "fe-6.1", name: "SPA com Roteamento", description: "Single Page App", tasks: 6, completed: 0 },
+        { id: "fe-6.2", name: "App Autenticada", description: "Login e proteção", tasks: 5, completed: 0 }
+      ],
+      color: "#8B5CF6",
+      iconName: "Workflow"
+    },
+    {
+      id: 7,
+      title: "Desenvolvimento Profissional",
+      description: "TypeScript, testes E2E, deploy e boas práticas",
+      difficulty: "Avançado",
+      concepts: ["TypeScript", "Cypress", "Vercel/Netlify", "Performance"],
+      projects: [
+        { id: "fe-7.1", name: "App com TypeScript", description: "Aplicativo type-safe", tasks: 6, completed: 0 },
+        { id: "fe-7.2", name: "Deploy em Produção", description: "Publicar aplicativo", tasks: 4, completed: 0 }
+      ],
+      color: "#A78BFA",
+      iconName: "Settings"
+    }
+  ]
+};
+
+// TRILHA 6: FULL-STACK
+export const fullstackTrail: Trail = {
+  id: "fullstack",
+  name: "Full-Stack: Desenvolvedor Completo",
+  description: "Domine desenvolvimento web completo: front-end, back-end, banco de dados e deploy",
+  duration: "30-36 semanas",
+  difficulty: "Intermediário → Avançado",
+  color: "#00D9FF",
+  iconName: "Workflow",
+  stages: [
+    {
+      id: 0,
+      title: "Fundamentos Web Completos",
+      description: "Arquitetura web, cliente-servidor e REST",
+      difficulty: "Iniciante",
+      concepts: ["Modelo Cliente-Servidor", "HTTP/HTTPS", "REST", "MVC"],
+      projects: [
+        { id: "fs-0.1", name: "App Web Simples", description: "Cliente-servidor básico", tasks: 4, completed: 0 },
+        { id: "fs-0.2", name: "API REST Simples", description: "Endpoints CRUD", tasks: 5, completed: 0 }
+      ],
+      color: "#00D9FF",
+      iconName: "Code2"
+    },
+    {
+      id: 1,
+      title: "Frontend Profissional",
+      description: "HTML, CSS, JavaScript e React avançado",
+      difficulty: "Intermediário",
+      concepts: ["React", "State Management", "Roteamento", "Performance"],
+      projects: [
+        { id: "fs-1.1", name: "Dashboard Interativo", description: "Múltiplos componentes", tasks: 6, completed: 0 },
+        { id: "fs-1.2", name: "SPA com Roteamento", description: "Single Page App", tasks: 5, completed: 0 }
+      ],
+      color: "#00E5FF",
+      iconName: "Palette"
+    },
+    {
+      id: 2,
+      title: "Backend com Node.js",
+      description: "Express, rotas, middleware e autenticação",
+      difficulty: "Intermediário",
+      concepts: ["Node.js", "Express", "Middleware", "JWT"],
+      projects: [
+        { id: "fs-2.1", name: "API REST Completa", description: "CRUD com Express", tasks: 6, completed: 0 },
+        { id: "fs-2.2", name: "Sistema de Autenticação", description: "Login e registro", tasks: 5, completed: 0 }
+      ],
+      color: "#00D4FF",
+      iconName: "Code2"
+    },
+    {
+      id: 3,
+      title: "Banco de Dados",
+      description: "SQL, PostgreSQL, MongoDB e ORMs",
+      difficulty: "Intermediário",
+      concepts: ["SQL", "PostgreSQL", "MongoDB", "Sequelize"],
+      projects: [
+        { id: "fs-3.1", name: "Schema de BD", description: "Design completo", tasks: 5, completed: 0 },
+        { id: "fs-3.2", name: "CRUD com ORM", description: "Operações com banco", tasks: 5, completed: 0 }
+      ],
+      color: "#00C4FF",
+      iconName: "Database"
+    },
+    {
+      id: 4,
+      title: "Integração Backend-Frontend",
+      description: "API design, tratamento de erros e performance",
+      difficulty: "Intermediário",
+      concepts: ["API Design", "Error Handling", "Caching", "Otimização"],
+      projects: [
+        { id: "fs-4.1", name: "App Full-Stack", description: "Todo app completo", tasks: 6, completed: 0 },
+        { id: "fs-4.2", name: "E-commerce MVP", description: "Produtos e carrinho", tasks: 7, completed: 0 }
+      ],
+      color: "#00B4FF",
+      iconName: "Workflow"
+    },
+    {
+      id: 5,
+      title: "Testes e Qualidade",
+      description: "Jest, React Testing Library, E2E e CI/CD",
+      difficulty: "Avançado",
+      concepts: ["Jest", "React Testing", "Cypress", "GitHub Actions"],
+      projects: [
+        { id: "fs-5.1", name: "Suite de Testes", description: "Frontend + Backend", tasks: 6, completed: 0 },
+        { id: "fs-5.2", name: "Pipeline CI/CD", description: "GitHub Actions", tasks: 5, completed: 0 }
+      ],
+      color: "#00A4FF",
+      iconName: "Settings"
+    },
+    {
+      id: 6,
+      title: "Deployment e DevOps",
+      description: "Docker, deploy em produção e monitoramento",
+      difficulty: "Avançado",
+      concepts: ["Docker", "Heroku", "AWS", "Monitoramento"],
+      projects: [
+        { id: "fs-6.1", name: "Dockerização", description: "Containers para app", tasks: 5, completed: 0 },
+        { id: "fs-6.2", name: "Deploy em Produção", description: "App ao vivo", tasks: 5, completed: 0 }
+      ],
+      color: "#0094FF",
+      iconName: "GitBranch"
+    },
+    {
+      id: 7,
+      title: "Segurança e Escalabilidade",
+      description: "CORS, CSRF, XSS, load balancing e caching",
+      difficulty: "Avançado",
+      concepts: ["Segurança Web", "Escalabilidade", "CDN", "Load Balancing"],
+      projects: [
+        { id: "fs-7.1", name: "App Segura", description: "Implementar proteções", tasks: 6, completed: 0 },
+        { id: "fs-7.2", name: "Otimização", description: "Reduzir tempo de carga", tasks: 5, completed: 0 }
+      ],
+      color: "#0084FF",
+      iconName: "Settings"
+    },
+    {
+      id: 8,
+      title: "Tecnologias Avançadas",
+      description: "TypeScript, GraphQL, WebSockets e real-time",
+      difficulty: "Avançado",
+      concepts: ["TypeScript", "GraphQL", "WebSockets", "Real-time"],
+      projects: [
+        { id: "fs-8.1", name: "App com TypeScript", description: "Type-safe codebase", tasks: 6, completed: 0 },
+        { id: "fs-8.2", name: "API GraphQL", description: "Substituir REST", tasks: 5, completed: 0 }
+      ],
+      color: "#0074FF",
+      iconName: "Code2"
+    },
+    {
+      id: 9,
+      title: "Projeto Capstone",
+      description: "Projeto full-stack profissional completo",
+      difficulty: "Avançado",
+      concepts: ["Planejamento", "Desenvolvimento", "Deploy", "Manutenção"],
+      projects: [
+        { id: "fs-9.1", name: "Projeto Full-Stack", description: "App profissional", tasks: 10, completed: 0 },
+        { id: "fs-9.2", name: "Documentação", description: "README e API docs", tasks: 5, completed: 0 }
+      ],
+      color: "#0064FF",
+      iconName: "Briefcase"
+    }
+  ]
+};
+
 // Todas as trilhas
-export const allTrails: Trail[] = [javaTrail, backendTrail, englishTrail, mathTrail];
+export const allTrails: Trail[] = [javaTrail, backendTrail, englishTrail, mathTrail, frontendTrail, fullstackTrail];
 
 // Função para obter trilha por ID
 export function getTrailById(id: string): Trail | undefined {
