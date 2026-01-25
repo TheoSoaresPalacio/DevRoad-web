@@ -12,6 +12,8 @@ import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetail";
 import Achievements from "./pages/Achievements";
 import ConceptDetail from "./pages/ConceptDetail";
+import Projects from "./pages/Projects";
+import PracticalProjectDetail from "./pages/PracticalProjectDetail";
 
 
 function Router() {
@@ -20,6 +22,8 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/project/:id"} component={ProjectDetail} />
       <Route path={"/concept/:conceptId"} component={ConceptDetail} />
+      <Route path={"/projects"} component={Projects} />
+      <Route path={"/practical-project/:projectId"} component={PracticalProjectDetail} />
       <Route path={"/achievements"} component={Achievements} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}

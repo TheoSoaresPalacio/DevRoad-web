@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { ChevronRight, Trophy } from "lucide-react";
+import { ChevronRight, Trophy, BookOpen } from "lucide-react";
 import { useState } from "react";
 import { Link } from "wouter";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from "recharts";
@@ -68,6 +68,12 @@ export default function Home() {
               <p className="text-gray-600 mt-1">Prepare-se para conseguir seu primeiro emprego como desenvolvedor</p>
             </div>
             <div className="flex items-center gap-6">
+              <Link href="/projects">
+                <Button variant="outline" className="flex items-center gap-2">
+                  <BookOpen className="w-4 h-4" />
+                  Projetos Práticos
+                </Button>
+              </Link>
               <Link href="/achievements">
                 <Button variant="outline" className="flex items-center gap-2">
                   <Trophy className="w-4 h-4" />
