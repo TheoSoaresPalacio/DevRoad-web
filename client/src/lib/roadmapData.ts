@@ -1,0 +1,671 @@
+import React from "react";
+import { Zap, Code2, Database, Settings, BookOpen, GitBranch, Layers, Globe, Users, Headphones, FileText, Briefcase } from "lucide-react";
+
+export interface Project {
+  id: string;
+  name: string;
+  description: string;
+  tasks: number;
+  completed: number;
+}
+
+export interface Stage {
+  id: number;
+  title: string;
+  description: string;
+  difficulty: "Iniciante" | "Intermediário" | "Avançado";
+  concepts: string[];
+  projects: Project[];
+  color: string;
+  iconName: string;
+}
+
+export interface Trail {
+  id: string;
+  name: string;
+  description: string;
+  duration: string;
+  difficulty: string;
+  iconName: string;
+  color: string;
+  stages: Stage[];
+}
+
+// TRILHA 1: JAVA & POO
+export const javaTrail: Trail = {
+  id: "java",
+  name: "Java & Programação Orientada a Objetos",
+  description: "Domine Java desde o básico até conceitos avançados de POO",
+  duration: "7-10 semanas",
+  difficulty: "Iniciante → Avançado",
+  color: "#0066FF",
+  iconName: "Code2",
+  stages: [
+    {
+      id: 0,
+      title: "Fundamentos Essenciais",
+      description: "Compreenda a sintaxe básica de Java, tipos de dados, variáveis e operadores.",
+      difficulty: "Iniciante",
+      concepts: ["Tipos de Dados", "Variáveis", "Operadores Aritméticos", "Operadores Lógicos"],
+      projects: [
+        {
+          id: "0.1",
+          name: "Calculadora Simples",
+          description: "Crie um programa que realiza operações aritméticas básicas.",
+          tasks: 4,
+          completed: 0,
+        },
+        {
+          id: "0.2",
+          name: "Conversor de Temperaturas",
+          description: "Converta entre Celsius, Fahrenheit e Kelvin.",
+          tasks: 3,
+          completed: 0,
+        },
+      ],
+      color: "#0066FF",
+      iconName: "Zap",
+    },
+    {
+      id: 1,
+      title: "Estruturas de Controle",
+      description: "Controle o fluxo de execução usando condicionais e loops.",
+      difficulty: "Iniciante",
+      concepts: ["if-else", "switch-case", "for", "while", "do-while", "break/continue"],
+      projects: [
+        {
+          id: "1.1",
+          name: "Jogo de Adivinhação",
+          description: "Crie um jogo onde o usuário tenta adivinhar um número.",
+          tasks: 4,
+          completed: 0,
+        },
+        {
+          id: "1.2",
+          name: "Tabuada Interativa",
+          description: "Exiba a tabuada de um número escolhido pelo usuário.",
+          tasks: 4,
+          completed: 0,
+        },
+      ],
+      color: "#FF8C42",
+      iconName: "Code2",
+    },
+    {
+      id: 2,
+      title: "Arrays e Strings",
+      description: "Trabalhe com coleções de dados e manipulação de texto.",
+      difficulty: "Iniciante",
+      concepts: ["Arrays", "Loops sobre Arrays", "Strings", "Métodos de String", "Comparação"],
+      projects: [
+        {
+          id: "2.1",
+          name: "Gerenciador de Notas",
+          description: "Armazene e calcule a média de notas de alunos.",
+          tasks: 5,
+          completed: 0,
+        },
+        {
+          id: "2.2",
+          name: "Manipulador de Strings",
+          description: "Realize operações com strings (inversão, palíndromo, etc).",
+          tasks: 4,
+          completed: 0,
+        },
+      ],
+      color: "#0052CC",
+      iconName: "Database",
+    },
+    {
+      id: 3,
+      title: "Métodos e Funções",
+      description: "Crie e reutilize código através de métodos modulares.",
+      difficulty: "Intermediário",
+      concepts: ["Declaração de Métodos", "Parâmetros", "Retorno", "Sobrecarga", "Recursão"],
+      projects: [
+        {
+          id: "3.1",
+          name: "Biblioteca de Funções Matemáticas",
+          description: "Crie métodos para operações matemáticas (fatorial, fibonacci, etc).",
+          tasks: 5,
+          completed: 0,
+        },
+        {
+          id: "3.2",
+          name: "Sistema de Validação",
+          description: "Implemente validadores para email, senha, CPF e data.",
+          tasks: 4,
+          completed: 0,
+        },
+      ],
+      color: "#003D99",
+      iconName: "Settings",
+    },
+    {
+      id: 4,
+      title: "POO Básica - Encapsulamento",
+      description: "Entenda classes, objetos e o princípio de encapsulamento.",
+      difficulty: "Intermediário",
+      concepts: ["Classes", "Objetos", "Atributos", "Métodos", "Construtores", "Getters/Setters"],
+      projects: [
+        {
+          id: "4.1",
+          name: "Sistema de Cadastro Simples",
+          description: "Crie classes Pessoa e ContaBancaria com encapsulamento.",
+          tasks: 4,
+          completed: 0,
+        },
+      ],
+      color: "#002966",
+      iconName: "BookOpen",
+    },
+    {
+      id: 5,
+      title: "POO Intermediária - Herança e Polimorfismo",
+      description: "Reutilize código através de herança e crie hierarquias de classes.",
+      difficulty: "Intermediário",
+      concepts: ["Herança", "Sobrescrita", "@Override", "Polimorfismo", "ArrayList"],
+      projects: [
+        {
+          id: "5.1",
+          name: "Sistema de Gerenciamento de Funcionários",
+          description: "Gerencie diferentes tipos de funcionários com herança.",
+          tasks: 3,
+          completed: 0,
+        },
+      ],
+      color: "#0066FF",
+      iconName: "GitBranch",
+    },
+    {
+      id: 6,
+      title: "POO Avançada - Abstração e Interfaces",
+      description: "Aplique abstração, interfaces e coleções avançadas.",
+      difficulty: "Avançado",
+      concepts: ["Interfaces", "Classes Abstratas", "Coleções", "Exceções", "Polimorfismo Avançado"],
+      projects: [
+        {
+          id: "6.1",
+          name: "Simulador de Formas Geométricas",
+          description: "Implemente formas com interfaces e classes abstratas.",
+          tasks: 4,
+          completed: 0,
+        },
+      ],
+      color: "#FF8C42",
+      iconName: "Layers",
+    },
+  ],
+};
+
+// TRILHA 2: BACK-END PROFISSIONAL
+export const backendTrail: Trail = {
+  id: "backend",
+  name: "Back-End Profissional",
+  description: "Desenvolva habilidades para conseguir seu primeiro emprego como desenvolvedor back-end",
+  duration: "8-12 semanas",
+  difficulty: "Intermediário → Avançado",
+  color: "#FF6B35",
+  iconName: "Briefcase",
+  stages: [
+    {
+      id: 8,
+      title: "Git e Controle de Versão",
+      description: "Domine versionamento de código com Git e GitHub",
+      difficulty: "Intermediário",
+      concepts: ["Git Basics", "Commits", "Branches", "Merge", "GitHub", "Pull Requests"],
+      projects: [
+        {
+          id: "8.1",
+          name: "Repositório Pessoal",
+          description: "Crie seu primeiro repositório e configure Git",
+          tasks: 4,
+          completed: 0,
+        },
+        {
+          id: "8.2",
+          name: "Contribuição Open-Source",
+          description: "Contribua em um projeto open-source no GitHub",
+          tasks: 3,
+          completed: 0,
+        },
+      ],
+      color: "#FF6B35",
+      iconName: "GitBranch",
+    },
+    {
+      id: 9,
+      title: "Banco de Dados Relacional",
+      description: "Projete e gerencie bancos de dados com SQL",
+      difficulty: "Intermediário",
+      concepts: ["Modelagem", "SQL", "Relacionamentos", "Normalização", "Índices", "Queries"],
+      projects: [
+        {
+          id: "9.1",
+          name: "Banco de Dados E-commerce",
+          description: "Crie um banco de dados completo para e-commerce",
+          tasks: 5,
+          completed: 0,
+        },
+        {
+          id: "9.2",
+          name: "Sistema de Biblioteca",
+          description: "Implemente um sistema de gerenciamento de biblioteca",
+          tasks: 4,
+          completed: 0,
+        },
+      ],
+      color: "#FFA500",
+      iconName: "Database",
+    },
+    {
+      id: 10,
+      title: "JDBC e Persistência",
+      description: "Conecte Java com bancos de dados usando JDBC",
+      difficulty: "Intermediário",
+      concepts: ["JDBC", "Connection Pool", "DAO Pattern", "Transações", "Prepared Statements"],
+      projects: [
+        {
+          id: "10.1",
+          name: "Aplicação CRUD com JDBC",
+          description: "Crie uma aplicação CRUD completa com JDBC",
+          tasks: 5,
+          completed: 0,
+        },
+        {
+          id: "10.2",
+          name: "Sistema de Vendas",
+          description: "Implemente um sistema de vendas com persistência",
+          tasks: 4,
+          completed: 0,
+        },
+      ],
+      color: "#FF8C42",
+      iconName: "Database",
+    },
+    {
+      id: 11,
+      title: "APIs REST com Spring Boot",
+      description: "Crie serviços web profissionais com Spring Boot",
+      difficulty: "Avançado",
+      concepts: ["REST", "Spring Boot", "Spring Data JPA", "Endpoints", "JSON", "HTTP Methods"],
+      projects: [
+        {
+          id: "11.1",
+          name: "API de Blog",
+          description: "Crie uma API REST completa para um blog",
+          tasks: 5,
+          completed: 0,
+        },
+        {
+          id: "11.2",
+          name: "API de E-commerce",
+          description: "Implemente uma API de e-commerce com Spring Boot",
+          tasks: 5,
+          completed: 0,
+        },
+      ],
+      color: "#0066FF",
+      iconName: "Code2",
+    },
+    {
+      id: 12,
+      title: "Autenticação e Autorização",
+      description: "Implemente segurança com JWT e Spring Security",
+      difficulty: "Avançado",
+      concepts: ["JWT", "OAuth2", "Spring Security", "Roles", "Criptografia", "Permissões"],
+      projects: [
+        {
+          id: "12.1",
+          name: "Sistema de Login",
+          description: "Crie um sistema de autenticação com JWT",
+          tasks: 4,
+          completed: 0,
+        },
+        {
+          id: "12.2",
+          name: "API com Autenticação",
+          description: "Adicione autenticação a uma API existente",
+          tasks: 3,
+          completed: 0,
+        },
+      ],
+      color: "#003D99",
+      iconName: "Settings",
+    },
+    {
+      id: 13,
+      title: "Deploy e DevOps Básico",
+      description: "Coloque sua aplicação em produção",
+      difficulty: "Avançado",
+      concepts: ["Docker", "CI/CD", "Variáveis de Ambiente", "Logs", "Monitoramento", "Cloud"],
+      projects: [
+        {
+          id: "13.1",
+          name: "Containerizar Aplicação",
+          description: "Crie um Dockerfile para sua aplicação",
+          tasks: 3,
+          completed: 0,
+        },
+        {
+          id: "13.2",
+          name: "Deploy em Nuvem",
+          description: "Faça deploy em Heroku ou AWS",
+          tasks: 4,
+          completed: 0,
+        },
+      ],
+      color: "#0052CC",
+      iconName: "Layers",
+    },
+    {
+      id: 14,
+      title: "Testes Unitários e Integração",
+      description: "Garanta qualidade com testes automatizados",
+      difficulty: "Avançado",
+      concepts: ["JUnit", "Mockito", "Testes Unitários", "Testes de Integração", "TDD", "Cobertura"],
+      projects: [
+        {
+          id: "14.1",
+          name: "Testar API REST",
+          description: "Implemente testes para uma API",
+          tasks: 4,
+          completed: 0,
+        },
+        {
+          id: "14.2",
+          name: "Aumentar Cobertura",
+          description: "Atinja 80% de cobertura de testes",
+          tasks: 3,
+          completed: 0,
+        },
+      ],
+      color: "#002966",
+      iconName: "BookOpen",
+    },
+    {
+      id: 15,
+      title: "Padrões e Arquitetura",
+      description: "Escreva código profissional e escalável",
+      difficulty: "Avançado",
+      concepts: ["Design Patterns", "SOLID", "Clean Architecture", "MVC", "Refatoração"],
+      projects: [
+        {
+          id: "15.1",
+          name: "Refatorar Projeto",
+          description: "Refatore um projeto anterior com padrões",
+          tasks: 4,
+          completed: 0,
+        },
+        {
+          id: "15.2",
+          name: "Arquitetura Escalável",
+          description: "Crie uma arquitetura profissional",
+          tasks: 3,
+          completed: 0,
+        },
+      ],
+      color: "#FF8C42",
+      iconName: "Layers",
+    },
+  ],
+};
+
+// TRILHA 3: INGLÊS PARA PROGRAMADORES
+export const englishTrail: Trail = {
+  id: "english",
+  name: "Inglês para Programadores",
+  description: "Domine inglês técnico para comunicação profissional",
+  duration: "12+ semanas (contínuo)",
+  difficulty: "Iniciante → Avançado",
+  color: "#00B4D8",
+  iconName: "Globe",
+  stages: [
+    {
+      id: 16,
+      title: "Fundamentos de Inglês",
+      description: "Construa uma base sólida de inglês geral",
+      difficulty: "Iniciante",
+      concepts: ["Alfabeto", "Pronúncia", "Present Simple", "Números", "Saudações"],
+      projects: [
+        {
+          id: "16.1",
+          name: "Apresentação Pessoal",
+          description: "Crie uma apresentação em inglês sobre você",
+          tasks: 3,
+          completed: 0,
+        },
+        {
+          id: "16.2",
+          name: "Descrever Rotina",
+          description: "Descreva sua rotina diária em inglês",
+          tasks: 2,
+          completed: 0,
+        },
+      ],
+      color: "#00B4D8",
+      iconName: "Globe",
+    },
+    {
+      id: 17,
+      title: "Vocabulário Técnico Básico",
+      description: "Aprenda termos essenciais de programação",
+      difficulty: "Iniciante",
+      concepts: ["Termos Técnicos", "Comandos", "Documentação", "README", "Comentários"],
+      projects: [
+        {
+          id: "17.1",
+          name: "Ler Documentação",
+          description: "Leia documentação técnica em inglês",
+          tasks: 3,
+          completed: 0,
+        },
+        {
+          id: "17.2",
+          name: "Escrever README",
+          description: "Crie um README em inglês para seu projeto",
+          tasks: 2,
+          completed: 0,
+        },
+      ],
+      color: "#0096C7",
+      iconName: "FileText",
+    },
+    {
+      id: 18,
+      title: "Leitura de Documentação",
+      description: "Domine a leitura de documentação técnica",
+      difficulty: "Intermediário",
+      concepts: ["API Docs", "Tutoriais", "Stack Overflow", "Medium", "Dev.to"],
+      projects: [
+        {
+          id: "18.1",
+          name: "Ler 3 Tutoriais",
+          description: "Leia 3 tutoriais técnicos em inglês",
+          tasks: 3,
+          completed: 0,
+        },
+        {
+          id: "18.2",
+          name: "Responder no Stack Overflow",
+          description: "Responda 2 perguntas no Stack Overflow",
+          tasks: 2,
+          completed: 0,
+        },
+      ],
+      color: "#00B4D8",
+      iconName: "FileText",
+    },
+    {
+      id: 19,
+      title: "Conversação Técnica",
+      description: "Comunique-se em inglês sobre programação",
+      difficulty: "Intermediário",
+      concepts: ["Descrever Problemas", "Pedir Ajuda", "Explicar Soluções", "Reuniões"],
+      projects: [
+        {
+          id: "19.1",
+          name: "Participar em Call",
+          description: "Participe de uma call técnica em inglês",
+          tasks: 2,
+          completed: 0,
+        },
+        {
+          id: "19.2",
+          name: "Explicar Projeto",
+          description: "Explique seu projeto em inglês",
+          tasks: 2,
+          completed: 0,
+        },
+      ],
+      color: "#0096C7",
+      iconName: "Users",
+    },
+    {
+      id: 20,
+      title: "Escrita Profissional",
+      description: "Escreva emails e documentação em inglês",
+      difficulty: "Intermediário",
+      concepts: ["Email Profissional", "Documentação", "Pull Requests", "Blog Posts"],
+      projects: [
+        {
+          id: "20.1",
+          name: "Escrever Blog Posts",
+          description: "Escreva 3 artigos técnicos em inglês",
+          tasks: 3,
+          completed: 0,
+        },
+        {
+          id: "20.2",
+          name: "Pull Requests",
+          description: "Envie pull requests com descrição em inglês",
+          tasks: 2,
+          completed: 0,
+        },
+      ],
+      color: "#00B4D8",
+      iconName: "FileText",
+    },
+    {
+      id: 21,
+      title: "Compreensão Auditiva",
+      description: "Entenda inglês falado em contexto técnico",
+      difficulty: "Avançado",
+      concepts: ["Podcasts", "Vídeos", "Webinars", "Conferências", "Entrevistas"],
+      projects: [
+        {
+          id: "21.1",
+          name: "Assistir Vídeos",
+          description: "Assista 10 vídeos técnicos sem legenda",
+          tasks: 3,
+          completed: 0,
+        },
+        {
+          id: "21.2",
+          name: "Ouvir Podcasts",
+          description: "Ouça 5 episódios de podcast técnico",
+          tasks: 2,
+          completed: 0,
+        },
+      ],
+      color: "#0096C7",
+      iconName: "Headphones",
+    },
+    {
+      id: 22,
+      title: "Inglês para Entrevistas",
+      description: "Prepare-se para entrevistas em inglês",
+      difficulty: "Avançado",
+      concepts: ["Behavioral Questions", "Technical Questions", "Apresentação", "Negociação"],
+      projects: [
+        {
+          id: "22.1",
+          name: "Entrevistas Simuladas",
+          description: "Pratique 10 entrevistas simuladas",
+          tasks: 4,
+          completed: 0,
+        },
+        {
+          id: "22.2",
+          name: "Gravar Apresentação",
+          description: "Grave sua apresentação pessoal",
+          tasks: 2,
+          completed: 0,
+        },
+      ],
+      color: "#00B4D8",
+      iconName: "Users",
+    },
+    {
+      id: 23,
+      title: "Fluência Profissional",
+      description: "Atinja fluência profissional em inglês",
+      difficulty: "Avançado",
+      concepts: ["Discussões Técnicas", "Liderança", "Networking", "Carreira Internacional"],
+      projects: [
+        {
+          id: "23.1",
+          name: "Comunidade Internacional",
+          description: "Participe ativamente de comunidade global",
+          tasks: 3,
+          completed: 0,
+        },
+        {
+          id: "23.2",
+          name: "Apresentação em Conferência",
+          description: "Faça apresentação em conferência internacional",
+          tasks: 2,
+          completed: 0,
+        },
+      ],
+      color: "#0096C7",
+      iconName: "Globe",
+    },
+  ],
+};
+
+// Todas as trilhas
+export const allTrails: Trail[] = [javaTrail, backendTrail, englishTrail];
+
+// Função para obter trilha por ID
+export function getTrailById(id: string): Trail | undefined {
+  return allTrails.find((trail) => trail.id === id);
+}
+
+// Função para obter todos os estágios de todas as trilhas
+export function getAllStages(): Stage[] {
+  return allTrails.flatMap((trail) => trail.stages);
+}
+
+// Função para obter total de projetos
+export function getTotalProjectsCount(): number {
+  return allTrails.reduce((acc, trail) => {
+    return acc + trail.stages.reduce((stageAcc, stage) => stageAcc + stage.projects.length, 0);
+  }, 0);
+}
+
+// Função para obter total de conceitos
+export function getTotalConceptsCount(): number {
+  return allTrails.reduce((acc, trail) => {
+    return acc + trail.stages.reduce((stageAcc, stage) => stageAcc + stage.concepts.length, 0);
+  }, 0);
+}
+
+// Função para obter ícone por nome
+export function getIconByName(iconName: string) {
+  const iconMap: { [key: string]: string } = {
+    Zap: "Zap",
+    Code2: "Code2",
+    Database: "Database",
+    Settings: "Settings",
+    BookOpen: "BookOpen",
+    GitBranch: "GitBranch",
+    Layers: "Layers",
+    Globe: "Globe",
+    Users: "Users",
+    Headphones: "Headphones",
+    FileText: "FileText",
+    Briefcase: "Briefcase",
+  };
+  return iconMap[iconName] || "Code2";
+}
