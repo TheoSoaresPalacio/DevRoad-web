@@ -20,6 +20,8 @@ export interface Resource {
   type: 'documentation' | 'tutorial' | 'video' | 'article';
 }
 
+import { stagesDataComplete } from './stagesDataComplete';
+
 export const stagesData: Record<string, Stage> = {
   // ==================== ROAD JAVA ====================
   'java-stage-1': {
@@ -695,7 +697,8 @@ Crie uma aplicação backend profissional que integra tudo que aprendeu.
 ### Tempo estimado: 4-6 semanas
 
 Após completar este estágio, você estará pronto para trabalhar como desenvolvedor backend profissional!`
-  }
+  },
+  ...stagesDataComplete
 };
 
 export function getStageById(id: string): Stage | undefined {
