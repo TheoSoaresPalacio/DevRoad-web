@@ -34,12 +34,12 @@ export interface Trail {
 // TRILHA 1: JAVA & POO
 export const javaTrail: Trail = {
   id: "java",
-  name: "Road Java",
-  description: "Domine Java desde o básico até conceitos avançados de POO - Caminho completo para programadores Java",
+  name: "Java & Programação Orientada a Objetos",
+  description: "Domine Java desde o básico até conceitos avançados de POO",
   duration: "7-10 semanas",
   difficulty: "Iniciante → Avançado",
   color: "#0066FF",
-  iconName: "Road Java",
+  iconName: "Code2",
   stages: [
     {
       id: 0,
@@ -201,12 +201,12 @@ export const javaTrail: Trail = {
 // TRILHA 2: BACK-END PROFISSIONAL
 export const backendTrail: Trail = {
   id: "backend",
-  name: "Road de Macho (Back-End)",
-  description: "Desenvolva habilidades para conseguir seu primeiro emprego como desenvolvedor back-end profissional",
+  name: "Back-End Profissional",
+  description: "Desenvolva habilidades para conseguir seu primeiro emprego como desenvolvedor back-end",
   duration: "8-12 semanas",
   difficulty: "Intermediário → Avançado",
   color: "#FF6B35",
-  iconName: "Road de Macho",
+  iconName: "Briefcase",
   stages: [
     {
       id: 8,
@@ -872,12 +872,12 @@ export const mathTrail: Trail = {
 // TRILHA 5: FRONT-END
 export const frontendTrail: Trail = {
   id: "frontend",
-  name: "Front-Enzo (Front-End)",
+  name: "Front-End: HTML, CSS, JavaScript e React",
   description: "Domine desenvolvimento front-end moderno com React e crie interfaces web profissionais",
   duration: "20-24 semanas",
   difficulty: "Iniciante → Avançado",
   color: "#FF6B6B",
-  iconName: "Front-Enzo",
+  iconName: "Palette",
   stages: [
     {
       id: 0,
@@ -989,12 +989,12 @@ export const frontendTrail: Trail = {
 // TRILHA 6: FULL-STACK
 export const fullstackTrail: Trail = {
   id: "fullstack",
-  name: "FullDev (Full-Stack)",
-  description: "Domine desenvolvimento web completo: front-end, back-end, banco de dados e deploy profissional",
+  name: "Full-Stack: Desenvolvedor Completo",
+  description: "Domine desenvolvimento web completo: front-end, back-end, banco de dados e deploy",
   duration: "30-36 semanas",
   difficulty: "Intermediário → Avançado",
   color: "#00D9FF",
-  iconName: "FullDev",
+  iconName: "Workflow",
   stages: [
     {
       id: 0,
