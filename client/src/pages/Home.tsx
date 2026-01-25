@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { ChevronRight, Code2, GitBranch, Layers, CheckCircle2, Clock, Lock, Zap, Database, Settings, BookOpen } from "lucide-react";
 import { useState } from "react";
+import { Link } from "wouter";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from "recharts";
 
 /**
@@ -366,23 +367,25 @@ export default function Home() {
                                 onClick={() => setExpandedProject(expandedProject === project.id ? null : project.id)}
                               >
                                 <div className="flex items-start justify-between mb-2">
-                                  <div>
-                                    <h5 className="font-medium text-gray-900">{project.name}</h5>
-                                    <p className="text-sm text-gray-600">{project.description}</p>
-                                  </div>
-                                  <span className="text-xs text-gray-600 whitespace-nowrap ml-2">
-                                    {project.completed}/{project.tasks}
-                                  </span>
-                                </div>
-                                <Progress value={(project.completed / project.tasks) * 100} className="h-1.5" />
+                          <Link href={`/project/${project.id}`} className="flex-1">
+                            <h5 className="font-medium text-gray-900 hover:text-blue-600 transition-colors">{project.name}</h5>
+                            <p className="text-sm text-gray-600">{project.description}</p>
+                          </Link>
+                          <span className="text-xs text-gray-600 whitespace-nowrap ml-2">
+                            {project.completed}/{project.tasks}
+                          </span>
+                        </div>
+                        <Progress value={(project.completed / project.tasks) * 100} className="h-1.5" />
                               </div>
                             ))}
                           </div>
                         </div>
 
-                        <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-200 mt-4">
-                          Começar Estágio {stage.id}
-                        </Button>
+                        <Link href={`/project/${stage.projects[0]?.id}`}>
+                          <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-200 mt-4">
+                            Começar Estágio {stage.id}
+                          </Button>
+                        </Link>
                       </div>
                     )}
                   </Card>
