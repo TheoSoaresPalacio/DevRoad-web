@@ -6,6 +6,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { ArrowLeft, Clock, Target, BookOpen, ExternalLink, CheckCircle2, Circle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { getProjectById } from '@/lib/projectsData';
+import ExternalIntegration from '@/components/ExternalIntegration';
 
 export default function PracticalProjectDetail() {
   const { projectId } = useParams<{ projectId: string }>();
@@ -278,6 +279,12 @@ export default function PracticalProjectDetail() {
             )}
           </Card>
         )}
+
+        {/* Integração com GitHub e LeetCode */}
+        <ExternalIntegration
+          projectId={projectId || ''}
+          projectName={project.title}
+        />
 
         {/* Recursos Recomendados */}
         {project.resources.length > 0 && (

@@ -34,8 +34,8 @@ export interface Trail {
 // TRILHA 1: JAVA & POO
 export const javaTrail: Trail = {
   id: "java",
-  name: "Java & Programação Orientada a Objetos",
-  description: "Domine Java desde o básico até conceitos avançados de POO",
+  name: "Road Java",
+  description: "Domine Java desde o básico até conceitos avançados de POO - Caminho completo para programadores Java",
   duration: "7-10 semanas",
   difficulty: "Iniciante → Avançado",
   color: "#0066FF",
@@ -201,8 +201,8 @@ export const javaTrail: Trail = {
 // TRILHA 2: BACK-END PROFISSIONAL
 export const backendTrail: Trail = {
   id: "backend",
-  name: "Back-End Profissional",
-  description: "Desenvolva habilidades para conseguir seu primeiro emprego como desenvolvedor back-end",
+  name: "Road de Macho (Back-End)",
+  description: "Desenvolva habilidades para conseguir seu primeiro emprego como desenvolvedor back-end profissional",
   duration: "8-12 semanas",
   difficulty: "Intermediário → Avançado",
   color: "#FF6B35",
@@ -872,7 +872,7 @@ export const mathTrail: Trail = {
 // TRILHA 5: FRONT-END
 export const frontendTrail: Trail = {
   id: "frontend",
-  name: "Front-End: HTML, CSS, JavaScript e React",
+  name: "Front-Enzo (Front-End)",
   description: "Domine desenvolvimento front-end moderno com React e crie interfaces web profissionais",
   duration: "20-24 semanas",
   difficulty: "Iniciante → Avançado",
@@ -989,8 +989,8 @@ export const frontendTrail: Trail = {
 // TRILHA 6: FULL-STACK
 export const fullstackTrail: Trail = {
   id: "fullstack",
-  name: "Full-Stack: Desenvolvedor Completo",
-  description: "Domine desenvolvimento web completo: front-end, back-end, banco de dados e deploy",
+  name: "FullDev (Full-Stack)",
+  description: "Domine desenvolvimento web completo: front-end, back-end, banco de dados e deploy profissional",
   duration: "30-36 semanas",
   difficulty: "Intermediário → Avançado",
   color: "#00D9FF",

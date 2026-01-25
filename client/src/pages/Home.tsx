@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { ChevronRight, Trophy, BookOpen } from "lucide-react";
+import { ChevronRight, Trophy, BookOpen, Moon, Sun } from "lucide-react";
 import { useState } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
 import { Link } from "wouter";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from "recharts";
 import StreakDisplay from "@/components/StreakDisplay";
@@ -17,6 +18,7 @@ import { allTrails, getIconByName } from "@/lib/roadmapData";
  */
 
 export default function Home() {
+  const { theme, toggleTheme } = useTheme();
   const [selectedTrailId, setSelectedTrailId] = useState<string>("java");
   const selectedTrail = allTrails.find((t) => t.id === selectedTrailId);
 
@@ -68,6 +70,17 @@ export default function Home() {
               <p className="text-gray-600 mt-1">Prepare-se para conseguir seu primeiro emprego como desenvolvedor</p>
             </div>
             <div className="flex items-center gap-6">
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                title={theme === 'dark' ? 'Modo Claro' : 'Modo Escuro'}
+              >
+                {theme === 'dark' ? (
+                  <Sun className="w-5 h-5 text-yellow-500" />
+                ) : (
+                  <Moon className="w-5 h-5 text-gray-600" />
+                )}
+              </button>
               <Link href="/projects">
                 <Button variant="outline" className="flex items-center gap-2">
                   <BookOpen className="w-4 h-4" />
