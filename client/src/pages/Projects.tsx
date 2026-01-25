@@ -4,7 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowLeft, Clock, Zap, Target, BookOpen, Code2 } from 'lucide-react';
+import { ArrowLeft, Clock, Zap, Target, BookOpen, Code2, Moon, Sun } from 'lucide-react';
+import { useTheme } from '@/contexts/ThemeContext';
 import { 
   getAllProjects, 
   getProjectsByCategory, 
@@ -46,6 +47,7 @@ const difficultyColors = {
 };
 
 export default function Projects() {
+  const { theme, toggleTheme } = useTheme();
   const [, navigate] = useLocation();
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>('java');
   const [selectedType, setSelectedType] = useState<ProjectType | 'all'>('all');

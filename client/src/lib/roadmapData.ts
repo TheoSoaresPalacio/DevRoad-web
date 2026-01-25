@@ -39,7 +39,7 @@ export const javaTrail: Trail = {
   duration: "7-10 semanas",
   difficulty: "Iniciante → Avançado",
   color: "#0066FF",
-  iconName: "Code2",
+  iconName: "Road Java",
   stages: [
     {
       id: 0,
@@ -206,7 +206,7 @@ export const backendTrail: Trail = {
   duration: "8-12 semanas",
   difficulty: "Intermediário → Avançado",
   color: "#FF6B35",
-  iconName: "Briefcase",
+  iconName: "Road de Macho",
   stages: [
     {
       id: 8,
@@ -877,7 +877,7 @@ export const frontendTrail: Trail = {
   duration: "20-24 semanas",
   difficulty: "Iniciante → Avançado",
   color: "#FF6B6B",
-  iconName: "Palette",
+  iconName: "Front-Enzo",
   stages: [
     {
       id: 0,
@@ -994,7 +994,7 @@ export const fullstackTrail: Trail = {
   duration: "30-36 semanas",
   difficulty: "Intermediário → Avançado",
   color: "#00D9FF",
-  iconName: "Workflow",
+  iconName: "FullDev",
   stages: [
     {
       id: 0,

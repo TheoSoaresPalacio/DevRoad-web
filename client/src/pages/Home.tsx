@@ -10,11 +10,11 @@ import StreakDisplay from "@/components/StreakDisplay";
 import { allTrails, getIconByName } from "@/lib/roadmapData";
 
 /**
- * Design Philosophy: Minimalismo Técnico com Acentos Vibrantes
- * - Paleta neutra (cinza, branco) com acentos em azul elétrico (#0066FF) e laranja (#FF8C42)
- * - Layout assimétrico: conteúdo principal (70%) + sidebar de progresso (30%)
- * - Tipografia em escala harmônica com Poppins Bold para títulos
- * - Roadmap visual com 3 trilhas de aprendizado progressivas
+ * Design Philosophy: Premium Tech Aesthetic
+ * - Paleta escura/clara com gradientes modernos
+ * - Layout assimétrico com cards expansíveis
+ * - Tipografia em escala harmônica
+ * - Modo escuro totalmente funcional
  */
 
 export default function Home() {
@@ -60,19 +60,23 @@ export default function Home() {
   const totalConcepts = selectedTrail.stages.reduce((acc, s) => acc + s.concepts.length, 0);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className={`min-h-screen transition-colors duration-300 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}>
       {/* Header */}
-      <header className="border-b border-gray-200 bg-white sticky top-0 z-40">
+      <header className={`border-b transition-colors duration-300 ${theme === 'dark' ? 'border-gray-800 bg-gray-900' : 'border-gray-200 bg-white'} sticky top-0 z-40`}>
         <div className="container py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="font-display text-4xl text-gray-900">Caminho Profissional</h1>
-              <p className="text-gray-600 mt-1">Prepare-se para conseguir seu primeiro emprego como desenvolvedor</p>
+              <h1 className={`font-display text-4xl font-bold transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                DevRoad
+              </h1>
+              <p className={`mt-1 transition-colors duration-300 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                Prepare-se para conseguir seu primeiro emprego como desenvolvedor
+              </p>
             </div>
             <div className="flex items-center gap-6">
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className={`p-2 rounded-lg transition-colors duration-300 ${theme === 'dark' ? 'hover:bg-gray-800' : 'hover:bg-gray-100'}`}
                 title={theme === 'dark' ? 'Modo Claro' : 'Modo Escuro'}
               >
                 {theme === 'dark' ? (
@@ -94,8 +98,12 @@ export default function Home() {
                 </Button>
               </Link>
               <div className="text-right">
-                <div className="text-3xl font-bold text-blue-600">{Math.round(totalProgress)}%</div>
-                <p className="text-sm text-gray-600">Progresso Geral</p>
+                <div className={`text-3xl font-bold transition-colors duration-300 ${theme === 'dark' ? 'text-blue-400' : 'text-blue-600'}`}>
+                  {Math.round(totalProgress)}%
+                </div>
+                <p className={`text-sm transition-colors duration-300 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                  Progresso Geral
+                </p>
               </div>
             </div>
           </div>
@@ -106,287 +114,211 @@ export default function Home() {
       <main className="container py-12">
         {/* Trail Selector */}
         <section className="mb-12">
-          <h2 className="font-display text-2xl text-gray-900 mb-6">Escolha sua Trilha de Aprendizado</h2>
+          <h2 className={`font-display text-2xl font-bold mb-6 transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+            Escolha sua Trilha de Aprendizado
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {allTrails.map((trail) => (
               <Card
                 key={trail.id}
                 className={`p-6 border-2 cursor-pointer transition-all duration-300 ${
                   selectedTrailId === trail.id
-                    ? `border-[${trail.color}] bg-opacity-10 shadow-lg`
+                    ? `border-[${trail.color}] shadow-lg`
+                    : theme === 'dark'
+                    ? "border-gray-700 hover:border-gray-600 hover:shadow-md"
                     : "border-gray-200 hover:border-gray-300 hover:shadow-md"
-                }`}
+                } ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}
                 onClick={() => setSelectedTrailId(trail.id)}
-                style={
-                  selectedTrailId === trail.id
-                    ? { borderColor: trail.color, backgroundColor: trail.color + "10" }
-                    : {}
-                }
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div className="text-4xl">{getIconByName(trail.iconName)}</div>
-                  {selectedTrailId === trail.id && <div className="text-2xl">✓</div>}
+                  <div>
+                    <h3 className={`text-lg font-bold transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                      {trail.name}
+                    </h3>
+                    <p className={`text-sm mt-2 transition-colors duration-300 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                      {trail.description}
+                    </p>
+                  </div>
+                  {selectedTrailId === trail.id && (
+                    <ChevronRight className="w-5 h-5 text-green-500" />
+                  )}
                 </div>
-                <h3 className="font-semibold text-gray-900 text-lg mb-2">{trail.name}</h3>
-                <p className="text-sm text-gray-600 mb-4">{trail.description}</p>
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-semibold text-gray-700">{trail.duration}</span>
-                  <span className="px-2 py-1 rounded bg-gray-100 text-gray-700">{trail.difficulty}</span>
+                <div className={`flex justify-between text-xs transition-colors duration-300 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                  <span>{trail.duration}</span>
+                  <span>{trail.difficulty}</span>
                 </div>
               </Card>
             ))}
           </div>
         </section>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Left Column - Roadmap */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Hero Section */}
-            <section className="relative overflow-hidden rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 p-12 border border-gray-200">
-              <img src="/images/hero-java-learning.png" alt="Learning Journey" className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 opacity-80" />
-              <div className="relative z-10 max-w-md">
-                <h2 className="font-display text-3xl text-gray-900 mb-4">Sua Jornada Profissional</h2>
-                <p className="text-gray-700 mb-6">Siga este roadmap estruturado para dominar as habilidades necessárias e conseguir seu primeiro emprego ou estágio como desenvolvedor.</p>
-                <Link href={`/project/${selectedTrail.stages[0]?.projects[0]?.id}`}>
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-200">
-                    Começar Agora <ChevronRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
+        {/* Content Grid */}
+        <div className="grid grid-cols-3 gap-8">
+          {/* Main Content (70%) */}
+          <div className="col-span-2 space-y-8">
+            {/* Estágios */}
+            <section>
+              <h2 className={`font-display text-2xl font-bold mb-6 transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                Estágios de Aprendizado
+              </h2>
+              <div className="space-y-4">
+                {selectedTrail.stages.map((stage) => (
+                  <Card
+                    key={stage.id}
+                    className={`p-6 transition-all duration-300 ${theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border hover:shadow-lg`}
+                  >
+                    <Link href={`/project/${stage.id}`}>
+                      <div className="cursor-pointer">
+                        <div className="flex items-center justify-between mb-3">
+                          <h3 className={`font-bold transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                            Estágio {stage.id}: {stage.title}
+                          </h3>
+                          <span className={`text-sm px-3 py-1 rounded-full transition-colors duration-300 ${theme === 'dark' ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-700'}`}>
+                            {stage.difficulty}
+                          </span>
+                        </div>
+                        <p className={`text-sm mb-4 transition-colors duration-300 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                          {stage.description}
+                        </p>
+                        <div className="flex items-center justify-between text-sm">
+                          <span className={`transition-colors duration-300 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                            {stage.projects.length} projetos • {stage.concepts.length} conceitos
+                          </span>
+                          <ChevronRight className={`w-4 h-4 transition-colors duration-300 ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`} />
+                        </div>
+                      </div>
+                    </Link>
+                  </Card>
+                ))}
               </div>
             </section>
 
-            {/* Roadmap Timeline */}
+            {/* Gráficos */}
             <section className="space-y-6">
-              <h2 className="font-display text-2xl text-gray-900">Roadmap de {selectedTrail.name}</h2>
+              <h2 className={`font-display text-2xl font-bold transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                Análise de Progresso
+              </h2>
 
-              {selectedTrail.stages.map((stage, index) => (
-                <div key={stage.id} className="relative">
-                  {/* Timeline Connector */}
-                  {index < selectedTrail.stages.length - 1 && (
-                    <div className="absolute left-6 top-20 w-0.5 h-12 bg-gradient-to-b from-gray-300 to-gray-100" />
-                  )}
-
-                  <Card className="p-6 border border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 relative z-10">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex items-start gap-4">
-                        {/* Stage Number Circle */}
-                        <div
-                          className="w-12 h-12 rounded-full flex items-center justify-center text-white flex-shrink-0 font-display text-lg"
-                          style={{ backgroundColor: stage.color }}
-                        >
-                          {stage.id}
-                        </div>
-
-                        <div className="flex-1">
-                          <div className="mb-2">
-                            <h3 className="font-semibold text-gray-900 text-lg">{stage.title}</h3>
-                            <p className="text-sm text-gray-600">{stage.description}</p>
-                          </div>
-
-                          <div className="flex items-center gap-4 mb-3">
-                            <span
-                              className={`text-xs font-semibold px-3 py-1 rounded-full ${
-                                stage.difficulty === "Iniciante"
-                                  ? "bg-green-100 text-green-700"
-                                  : stage.difficulty === "Intermediário"
-                                    ? "bg-yellow-100 text-yellow-700"
-                                    : "bg-red-100 text-red-700"
-                              }`}
-                            >
-                              {stage.difficulty}
-                            </span>
-                            <span className="text-xs text-gray-600 font-semibold">{stage.projects.length} projeto(s)</span>
-                          </div>
-
-                          {/* Concepts */}
-                          <div className="mb-3">
-                            <p className="text-xs font-semibold text-gray-700 mb-2">Conceitos:</p>
-                            <div className="flex flex-wrap gap-2">
-                              {stage.concepts.slice(0, 4).map((concept) => (
-                                <span key={concept} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
-                                  {concept}
-                                </span>
-                              ))}
-                              {stage.concepts.length > 4 && (
-                                <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">+{stage.concepts.length - 4} mais</span>
-                              )}
-                            </div>
-                          </div>
-
-                          {/* Projects */}
-                          <div className="space-y-2">
-                            {stage.projects.map((project) => (
-                              <div key={project.id} className="bg-gray-50 rounded-lg p-3 border border-gray-200">
-                                <Link href={`/project/${project.id}`} className="flex-1">
-                                  <h5 className="font-medium text-gray-900 hover:text-blue-600 transition-colors">{project.name}</h5>
-                                  <p className="text-sm text-gray-600">{project.description}</p>
-                                </Link>
-                                <Progress value={(project.completed / project.tasks) * 100} className="h-1.5 mt-2" />
-                              </div>
-                            ))}
-                          </div>
-
-                          <Link href={`/project/${stage.projects[0]?.id}`}>
-                            <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-200 mt-4">
-                              Começar Estágio {stage.id}
-                            </Button>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </Card>
-                </div>
-              ))}
-            </section>
-
-            {/* Charts Section */}
-            <div className="grid grid-cols-1 gap-8">
-              {/* Progress by Stage */}
-              <Card className="p-6 border border-gray-200">
-                <h3 className="font-semibold text-gray-900 mb-6">Progresso por Estágio</h3>
+              {/* Progresso por Estágio */}
+              <Card className={`p-6 transition-colors duration-300 ${theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border`}>
+                <h3 className={`font-bold mb-4 transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                  Progresso por Estágio
+                </h3>
                 <ResponsiveContainer width="100%" height={300}>
                   <BarChart data={progressData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                    <XAxis dataKey="stage" stroke="#6b7280" />
-                    <YAxis stroke="#6b7280" />
-                    <Tooltip contentStyle={{ backgroundColor: "#f3f4f6", border: "1px solid #e5e7eb" }} />
+                    <CartesianGrid strokeDasharray="3 3" stroke={theme === 'dark' ? '#374151' : '#e5e7eb'} />
+                    <XAxis stroke={theme === 'dark' ? '#9ca3af' : '#6b7280'} />
+                    <YAxis stroke={theme === 'dark' ? '#9ca3af' : '#6b7280'} />
+                    <Tooltip 
+                      contentStyle={{
+                        backgroundColor: theme === 'dark' ? '#1f2937' : '#ffffff',
+                        border: `1px solid ${theme === 'dark' ? '#374151' : '#e5e7eb'}`,
+                        color: theme === 'dark' ? '#ffffff' : '#000000'
+                      }}
+                    />
                     <Legend />
-                    <Bar dataKey="completed" fill="#0066FF" name="Concluídas" radius={[8, 8, 0, 0]} />
-                    <Bar dataKey="total" fill="#d3d3d3" name="Total" radius={[8, 8, 0, 0]} />
+                    <Bar dataKey="completed" fill="#3b82f6" />
+                    <Bar dataKey="total" fill="#e5e7eb" />
                   </BarChart>
                 </ResponsiveContainer>
               </Card>
 
-              {/* Learning Pace */}
-              <Card className="p-6 border border-gray-200">
-                <h3 className="font-semibold text-gray-900 mb-6">Ritmo de Aprendizado Sugerido</h3>
+              {/* Ritmo de Aprendizado */}
+              <Card className={`p-6 transition-colors duration-300 ${theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border`}>
+                <h3 className={`font-bold mb-4 transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                  Ritmo de Aprendizado Sugerido
+                </h3>
                 <ResponsiveContainer width="100%" height={300}>
                   <LineChart data={learningPathData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                    <XAxis dataKey="week" stroke="#6b7280" />
-                    <YAxis stroke="#6b7280" />
-                    <Tooltip contentStyle={{ backgroundColor: "#f3f4f6", border: "1px solid #e5e7eb" }} />
+                    <CartesianGrid strokeDasharray="3 3" stroke={theme === 'dark' ? '#374151' : '#e5e7eb'} />
+                    <XAxis stroke={theme === 'dark' ? '#9ca3af' : '#6b7280'} />
+                    <YAxis stroke={theme === 'dark' ? '#9ca3af' : '#6b7280'} />
+                    <Tooltip 
+                      contentStyle={{
+                        backgroundColor: theme === 'dark' ? '#1f2937' : '#ffffff',
+                        border: `1px solid ${theme === 'dark' ? '#374151' : '#e5e7eb'}`,
+                        color: theme === 'dark' ? '#ffffff' : '#000000'
+                      }}
+                    />
                     <Legend />
-                    <Line type="monotone" dataKey="concepts" stroke="#0066FF" strokeWidth={3} name="Conceitos por Semana" dot={{ fill: "#0066FF", r: 5 }} />
-                    <Line type="monotone" dataKey="projects" stroke="#FF8C42" strokeWidth={3} name="Projetos por Semana" dot={{ fill: "#FF8C42", r: 5 }} />
+                    <Line type="monotone" dataKey="concepts" stroke="#3b82f6" strokeWidth={2} />
+                    <Line type="monotone" dataKey="projects" stroke="#10b981" strokeWidth={2} />
                   </LineChart>
                 </ResponsiveContainer>
               </Card>
 
-              {/* Difficulty Distribution */}
-              <Card className="p-6 border border-gray-200">
-                <h3 className="font-semibold text-gray-900 mb-6">Distribuição de Dificuldade</h3>
+              {/* Distribuição de Dificuldade */}
+              <Card className={`p-6 transition-colors duration-300 ${theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border`}>
+                <h3 className={`font-bold mb-4 transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                  Distribuição de Dificuldade
+                </h3>
                 <ResponsiveContainer width="100%" height={300}>
                   <PieChart>
-                    <Pie data={difficultyData} cx="50%" cy="50%" labelLine={false} label={({ name, value }) => `${name}: ${value}`} outerRadius={100} fill="#8884d8" dataKey="value">
+                    <Pie
+                      data={difficultyData}
+                      cx="50%"
+                      cy="50%"
+                      labelLine={false}
+                      label={({ name, value }) => `${name}: ${value}`}
+                      outerRadius={100}
+                      fill="#8884d8"
+                      dataKey="value"
+                    >
                       {difficultyData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={entry.color} />
                       ))}
                     </Pie>
-                    <Tooltip />
+                    <Tooltip 
+                      contentStyle={{
+                        backgroundColor: theme === 'dark' ? '#1f2937' : '#ffffff',
+                        border: `1px solid ${theme === 'dark' ? '#374151' : '#e5e7eb'}`,
+                        color: theme === 'dark' ? '#ffffff' : '#000000'
+                      }}
+                    />
                   </PieChart>
                 </ResponsiveContainer>
               </Card>
-            </div>
+            </section>
           </div>
 
-          {/* Right Sidebar - Progress Tracker */}
-          <aside className="lg:col-span-1">
-            <div className="sticky top-24 space-y-6">
-              {/* Streak Display */}
-              <StreakDisplay />
-
-              {/* Progress Overview */}
-              <Card className="p-6 border border-gray-200 bg-gradient-to-br from-blue-50 to-blue-100">
-                <h3 className="font-semibold text-gray-900 mb-4">Progresso Geral</h3>
-                <div className="relative w-32 h-32 mx-auto mb-4">
-                  <svg className="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
-                    <circle cx="60" cy="60" r="54" fill="none" stroke="#e5e7eb" strokeWidth="8" />
-                    <circle
-                      cx="60"
-                      cy="60"
-                      r="54"
-                      fill="none"
-                      stroke="#0066FF"
-                      strokeWidth="8"
-                      strokeDasharray={`${(totalProgress / 100) * 339.3} 339.3`}
-                      strokeLinecap="round"
-                      className="transition-all duration-500"
-                    />
-                  </svg>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="font-display text-3xl text-blue-600">{Math.round(totalProgress)}%</div>
-                      <p className="text-xs text-gray-600">Completo</p>
-                    </div>
-                  </div>
+          {/* Sidebar (30%) */}
+          <aside className="space-y-6">
+            {/* Estatísticas */}
+            <Card className={`p-6 transition-colors duration-300 ${theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border`}>
+              <h3 className={`font-bold mb-4 transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                Estatísticas
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <p className={`text-sm transition-colors duration-300 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                    Progresso Geral
+                  </p>
+                  <p className={`text-2xl font-bold transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                    {Math.round(totalProgress)}%
+                  </p>
+                  <Progress value={totalProgress} className="mt-2" />
                 </div>
-                <p className="text-sm text-gray-700 text-center">0 de {progressData.reduce((acc, d) => acc + d.total, 0)} tarefas</p>
-              </Card>
-
-              {/* Statistics */}
-              <Card className="p-6 border border-gray-200">
-                <h3 className="font-semibold text-gray-900 mb-4">Estatísticas</h3>
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-700">Trilhas</span>
-                    <span className="font-semibold text-gray-900">{allTrails.length}</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-700">Estágios</span>
-                    <span className="font-semibold text-gray-900">{selectedTrail.stages.length}</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-700">Projetos</span>
-                    <span className="font-semibold text-gray-900">{totalProjects}</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-700">Conceitos</span>
-                    <span className="font-semibold text-gray-900">{totalConcepts}</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-700">Tempo Estimado</span>
-                    <span className="font-semibold text-gray-900">{selectedTrail.duration}</span>
-                  </div>
+                <div className={`border-t transition-colors duration-300 ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} pt-4`}>
+                  <p className={`text-sm transition-colors duration-300 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                    Total de Projetos
+                  </p>
+                  <p className={`text-2xl font-bold transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                    {totalProjects}
+                  </p>
                 </div>
-              </Card>
-
-              {/* Difficulty Breakdown */}
-              <Card className="p-6 border border-gray-200">
-                <h3 className="font-semibold text-gray-900 mb-4">Por Nível</h3>
-                <div className="space-y-3">
-                  {difficultyData.map((d) => (
-                    <div key={d.name} className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full" style={{ backgroundColor: d.color }} />
-                      <span className="text-sm text-gray-700">{d.name}: {d.value} estágio(s)</span>
-                    </div>
-                  ))}
+                <div className={`border-t transition-colors duration-300 ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} pt-4`}>
+                  <p className={`text-sm transition-colors duration-300 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                    Total de Conceitos
+                  </p>
+                  <p className={`text-2xl font-bold transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                    {totalConcepts}
+                  </p>
                 </div>
-              </Card>
+              </div>
+            </Card>
 
-              {/* Next Steps */}
-              <Card className="p-6 border border-gray-200 bg-orange-50">
-                <h3 className="font-semibold text-gray-900 mb-4">Próximos Passos</h3>
-                <ol className="space-y-3 text-sm text-gray-700">
-                  <li className="flex gap-3">
-                    <span className="font-semibold text-orange-600 flex-shrink-0">1.</span>
-                    <span>Escolha uma trilha acima</span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="font-semibold text-orange-600 flex-shrink-0">2.</span>
-                    <span>Comece pelo primeiro estágio</span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="font-semibold text-orange-600 flex-shrink-0">3.</span>
-                    <span>Complete os projetos em ordem</span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="font-semibold text-orange-600 flex-shrink-0">4.</span>
-                    <span>Acompanhe seu progresso</span>
-                  </li>
-                </ol>
-              </Card>
-            </div>
+            {/* Streak */}
+            <StreakDisplay />
           </aside>
         </div>
       </main>
