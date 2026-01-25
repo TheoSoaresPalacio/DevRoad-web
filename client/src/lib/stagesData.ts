@@ -265,8 +265,8 @@ POO é um paradigma que organiza código em objetos com dados e comportamento.
       'Entender polimorfismo'
     ],
     topics: [
-      'java-inheritance',
-      'java-polymorphism'
+      'java-oop-intro',
+      'java-methods'
     ],
     projects: ['Sistema de Funcionários', 'Hierarquia de Animais'],
     resources: [],

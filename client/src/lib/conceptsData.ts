@@ -36,12 +36,14 @@ import { conceptsDataExpanded, allConceptsData } from './conceptsDataExpanded';
 import { conceptsDataAdvanced } from './conceptsDataAdvanced';
 import { conceptsDataAllTrails } from './conceptsDataAllTrails';
 import { conceptsDataExtra } from './conceptsDataExtra';
+import { conceptsMissing } from './conceptsMissing';
 
 export const conceptsData: Record<string, Concept> = {
   ...allConceptsData,
   ...conceptsDataAdvanced,
   ...conceptsDataAllTrails,
-  ...conceptsDataExtra
+  ...conceptsDataExtra,
+  ...conceptsMissing
 };
 
 // Mantendo a estrutura original para compatibilidade

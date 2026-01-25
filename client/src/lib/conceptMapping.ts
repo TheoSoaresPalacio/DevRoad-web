@@ -147,10 +147,21 @@ export function getConceptIdFromTitle(title: string): string | undefined {
 
 // Função para obter ID ou usar como fallback
 export function resolveConceptId(titleOrId: string): string {
-  // Se já é um ID válido (começa com 'java-', 'backend-', etc), retorna
-  if (titleOrId.includes('-')) {
+  // Prefixos válidos de IDs
+  const validPrefixes = ['java-', 'backend-', 'frontend-', 'english-', 'math-', 'fullstack-', 'security-', 'devops-', 'testing-', 'database-', 'performance-'];
+  
+  // Se já é um ID válido (começa com um prefixo conhecido), retorna
+  if (validPrefixes.some(prefix => titleOrId.startsWith(prefix))) {
     return titleOrId;
   }
+  
   // Caso contrário, tenta mapear do título
-  return conceptTitleToId[titleOrId] || titleOrId;
+  const mapped = conceptTitleToId[titleOrId];
+  if (mapped) {
+    return mapped;
+  }
+  
+  // Se não encontrar no mapeamento, tenta criar um slug
+  // Isso é um fallback, mas idealmente todos os conceitos devem estar no mapeamento
+  return titleOrId;
 }
