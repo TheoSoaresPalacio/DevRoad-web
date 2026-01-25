@@ -5,6 +5,7 @@ import { ChevronRight, Code2, GitBranch, Layers, CheckCircle2, Clock, Lock, Zap,
 import { useState } from "react";
 import { Link } from "wouter";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from "recharts";
+import StreakDisplay from "@/components/StreakDisplay";
 
 /**
  * Design Philosophy: Minimalismo Técnico com Acentos Vibrantes
@@ -462,8 +463,10 @@ export default function Home() {
 
           {/* Right Sidebar - Progress Tracker */}
           <aside className="lg:col-span-1">
-            <div className="sticky top-24 space-y-6">
-              {/* Overall Progress */}
+            <div className="sticky top-24 space-y-6">              {/* Streak Display */}
+              <StreakDisplay />
+
+              {/* Progress Overview */}
               <Card className="p-6 border border-gray-200 bg-gradient-to-br from-blue-50 to-blue-100">
                 <h3 className="font-semibold text-gray-900 mb-4">Progresso Geral</h3>
                 <div className="relative w-32 h-32 mx-auto mb-4">

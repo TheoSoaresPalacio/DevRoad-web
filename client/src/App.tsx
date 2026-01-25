@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { ProgressProvider } from "./contexts/ProgressContext";
 import { AchievementProvider } from "./contexts/AchievementContext";
+import { StreakProvider } from "./contexts/StreakContext";
 import AchievementNotification from "./components/AchievementNotification";
 import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetail";
@@ -38,13 +39,15 @@ function App() {
         // switchable
       >
         <ProgressProvider>
-          <AchievementProvider>
-            <TooltipProvider>
-              <Toaster />
-              <Router />
-              <AchievementNotification />
-            </TooltipProvider>
-          </AchievementProvider>
+          <StreakProvider>
+            <AchievementProvider>
+              <TooltipProvider>
+                <Toaster />
+                <Router />
+                <AchievementNotification />
+              </TooltipProvider>
+            </AchievementProvider>
+          </StreakProvider>
         </ProgressProvider>
       </ThemeProvider>
     </ErrorBoundary>
