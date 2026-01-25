@@ -7,6 +7,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { Link } from "wouter";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from "recharts";
 import StreakDisplay from "@/components/StreakDisplay";
+import SearchBar from "@/components/SearchBar";
 import { allTrails, getIconByName } from "@/lib/roadmapData";
 
 /**
@@ -63,17 +64,26 @@ export default function Home() {
     <div className={`min-h-screen transition-colors duration-300 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}>
       {/* Header */}
       <header className={`border-b transition-colors duration-300 ${theme === 'dark' ? 'border-gray-800 bg-gray-900' : 'border-gray-200 bg-white'} sticky top-0 z-40`}>
-        <div className="container py-6">
-          <div className="flex items-center justify-between">
+        <div className="container py-4 md:py-6">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div>
               <h1 className={`font-display text-4xl font-bold transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                 DevRoad
               </h1>
-              <p className={`mt-1 transition-colors duration-300 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-                Prepare-se para conseguir seu primeiro emprego como desenvolvedor
-              </p>
+              <div className="flex items-center gap-3 mt-2">
+                <p className={`transition-colors duration-300 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                  Prepare-se para conseguir seu primeiro emprego como desenvolvedor
+                </p>
+                <span className={`px-3 py-1 rounded-full text-sm font-semibold transition-colors duration-300 ${theme === 'dark' ? 'bg-blue-900 text-blue-200' : 'bg-blue-100 text-blue-800'}`}>
+                  {selectedTrail?.name}
+                </span>
+              </div>
             </div>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2 md:gap-4 flex-1 justify-end w-full md:w-auto">
+              <div className="hidden md:block flex-1 max-w-xs">
+                <SearchBar />
+              </div>
+              <div className="flex items-center gap-2 md:gap-4">
               <button
                 onClick={toggleTheme}
                 className={`p-2 rounded-lg transition-colors duration-300 ${theme === 'dark' ? 'hover:bg-gray-800' : 'hover:bg-gray-100'}`}
@@ -105,6 +115,7 @@ export default function Home() {
                   Progresso Geral
                 </p>
               </div>
+              </div>
             </div>
           </div>
         </div>
@@ -113,11 +124,11 @@ export default function Home() {
       {/* Main Content */}
       <main className="container py-12">
         {/* Trail Selector */}
-        <section className="mb-12">
-          <h2 className={`font-display text-2xl font-bold mb-6 transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+        <section className="mb-8 md:mb-12">
+          <h2 className={`font-display text-xl md:text-2xl font-bold mb-4 md:mb-6 transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
             Escolha sua Trilha de Aprendizado
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {allTrails.map((trail) => (
               <Card
                 key={trail.id}
@@ -153,9 +164,9 @@ export default function Home() {
         </section>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
           {/* Main Content (70%) */}
-          <div className="col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-6 md:space-y-8">
             {/* Estágios */}
             <section>
               <h2 className={`font-display text-2xl font-bold mb-6 transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
@@ -282,7 +293,7 @@ export default function Home() {
           </div>
 
           {/* Sidebar (30%) */}
-          <aside className="space-y-6">
+          <aside className="space-y-4 md:space-y-6">
             {/* Estatísticas */}
             <Card className={`p-6 transition-colors duration-300 ${theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border`}>
               <h3 className={`font-bold mb-4 transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
