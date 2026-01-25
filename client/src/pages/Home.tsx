@@ -8,6 +8,8 @@ import { Link } from "wouter";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from "recharts";
 import StreakDisplay from "@/components/StreakDisplay";
 import SearchBar from "@/components/SearchBar";
+import RecentlyAccessed from "@/components/RecentlyAccessed";
+import { useHistory } from "@/contexts/HistoryContext";
 import { allTrails, getIconByName } from "@/lib/roadmapData";
 
 /**
@@ -20,8 +22,24 @@ import { allTrails, getIconByName } from "@/lib/roadmapData";
 
 export default function Home() {
   const { theme, toggleTheme } = useTheme();
+  const { addToHistory } = useHistory();
   const [selectedTrailId, setSelectedTrailId] = useState<string>("java");
   const selectedTrail = allTrails.find((t) => t.id === selectedTrailId);
+
+  // Adicionar trilha ao histórico quando mudar
+  const handleTrailChange = (trailId: string) => {
+    setSelectedTrailId(trailId);
+    const trail = allTrails.find((t) => t.id === trailId);
+    if (trail) {
+      addToHistory({
+        id: trail.id,
+        title: trail.name,
+        type: "trail",
+        trailId: trail.id,
+        path: "/",
+      });
+    }
+  };
 
   if (!selectedTrail) {
     return <div>Trilha não encontrada</div>;
@@ -122,7 +140,9 @@ export default function Home() {
       </header>
 
       {/* Main Content */}
-      <main className="container py-12">
+      <main className="container py-8 md:py-12">
+        {/* Recently Accessed */}
+        <RecentlyAccessed />
         {/* Trail Selector */}
         <section className="mb-8 md:mb-12">
           <h2 className={`font-display text-xl md:text-2xl font-bold mb-4 md:mb-6 transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
@@ -132,14 +152,14 @@ export default function Home() {
             {allTrails.map((trail) => (
               <Card
                 key={trail.id}
-                className={`p-6 border-2 cursor-pointer transition-all duration-300 ${
+                className={`p-4 md:p-6 border-2 cursor-pointer transition-all duration-300 ${
                   selectedTrailId === trail.id
                     ? `border-[${trail.color}] shadow-lg`
                     : theme === 'dark'
                     ? "border-gray-700 hover:border-gray-600 hover:shadow-md"
                     : "border-gray-200 hover:border-gray-300 hover:shadow-md"
                 } ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}
-                onClick={() => setSelectedTrailId(trail.id)}
+                onClick={() => handleTrailChange(trail.id)}
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>

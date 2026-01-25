@@ -7,6 +7,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { ProgressProvider } from "./contexts/ProgressContext";
 import { AchievementProvider } from "./contexts/AchievementContext";
 import { StreakProvider } from "./contexts/StreakContext";
+import { HistoryProvider } from "./contexts/HistoryContext";
 import AchievementNotification from "./components/AchievementNotification";
 import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetail";
@@ -44,17 +45,19 @@ function App() {
         defaultTheme="light"
         switchable
       >
-        <ProgressProvider>
-          <StreakProvider>
-            <AchievementProvider>
-              <TooltipProvider>
-                <Toaster />
-                <Router />
-                <AchievementNotification />
-              </TooltipProvider>
-            </AchievementProvider>
-          </StreakProvider>
-        </ProgressProvider>
+        <HistoryProvider>
+          <ProgressProvider>
+            <StreakProvider>
+              <AchievementProvider>
+                <TooltipProvider>
+                  <Toaster />
+                  <Router />
+                  <AchievementNotification />
+                </TooltipProvider>
+              </AchievementProvider>
+            </StreakProvider>
+          </ProgressProvider>
+        </HistoryProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );
