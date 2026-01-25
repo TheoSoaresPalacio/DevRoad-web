@@ -1,7 +1,7 @@
 // Estrutura de dados para Projetos Práticos, Portfólio e Atividades
 
 export type ProjectType = 'idea' | 'beginner' | 'intermediate' | 'advanced' | 'portfolio';
-export type ProjectCategory = 'java' | 'backend' | 'english' | 'fullstack';
+export type ProjectCategory = 'java' | 'backend' | 'english' | 'math' | 'fullstack';
 
 export interface Task {
   id: string;
@@ -1035,6 +1035,380 @@ export const practicalProjectsData: Record<string, PracticalProject> = {
       'Publique artigo técnico',
       'Crie podcast técnico',
       'Faça entrevista técnica'
+    ]
+  },
+  'math-calculadora-fracoes': {
+    id: 'math-calculadora-fracoes',
+    title: 'Calculadora de Frações',
+    description: 'Implemente uma calculadora completa que realiza operações com frações, simplificação e conversão de formatos.',
+    shortDescription: 'Operações com frações',
+    type: 'beginner',
+    category: 'math',
+    stage: 0,
+    difficulty: 'beginner',
+    estimatedHours: 8,
+    technologies: ['Python', 'Java', 'JavaScript'],
+    learningObjectives: [
+      'Entender estrutura de dados para frações',
+      'Implementar operações aritméticas',
+      'Simplificar frações usando MDC',
+      'Converter entre formatos'
+    ],
+    activities: [
+      {
+        id: 'math-frac-1',
+        title: 'Estrutura de Dados',
+        description: 'Crie classe para representar frações',
+        type: 'exercise',
+        difficulty: 'easy',
+        estimatedHours: 2,
+        tasks: [
+          { id: 't1', title: 'Definir classe Fraction', description: 'Crie classe com numerador e denominador', completed: false, estimatedHours: 1 },
+          { id: 't2', title: 'Implementar toString', description: 'Represente fração como string', completed: false, estimatedHours: 0.5 }
+        ],
+        resources: [],
+        expectedOutcome: 'Classe Fraction funcional'
+      },
+      {
+        id: 'math-frac-2',
+        title: 'Operações Aritméticas',
+        description: 'Implemente soma, subtração, multiplicação e divisão',
+        type: 'challenge',
+        difficulty: 'medium',
+        estimatedHours: 3,
+        tasks: [
+          { id: 't3', title: 'Soma de frações', description: 'Implemente adição', completed: false, estimatedHours: 0.75 },
+          { id: 't4', title: 'Subtração', description: 'Implemente subtração', completed: false, estimatedHours: 0.75 },
+          { id: 't5', title: 'Multiplicação', description: 'Implemente multiplicação', completed: false, estimatedHours: 0.75 },
+          { id: 't6', title: 'Divisão', description: 'Implemente divisão', completed: false, estimatedHours: 0.75 }
+        ],
+        resources: [],
+        expectedOutcome: 'Todas as operações funcionando'
+      },
+      {
+        id: 'math-frac-3',
+        title: 'Simplificação',
+        description: 'Implemente simplificação automática usando MDC',
+        type: 'practice',
+        difficulty: 'medium',
+        estimatedHours: 2,
+        tasks: [
+          { id: 't7', title: 'Calcular MDC', description: 'Implemente algoritmo de Euclides', completed: false, estimatedHours: 1 },
+          { id: 't8', title: 'Simplificar', description: 'Use MDC para simplificar', completed: false, estimatedHours: 1 }
+        ],
+        resources: [],
+        expectedOutcome: 'Frações simplificadas automaticamente'
+      },
+      {
+        id: 'math-frac-4',
+        title: 'Testes e UI',
+        description: 'Crie testes unitários e interface de usuário',
+        type: 'buildup',
+        difficulty: 'easy',
+        estimatedHours: 1,
+        tasks: [
+          { id: 't9', title: 'Testes unitários', description: 'Teste todas as operações', completed: false, estimatedHours: 0.5 },
+          { id: 't10', title: 'Interface', description: 'Crie interface para usar a calculadora', completed: false, estimatedHours: 0.5 }
+        ],
+        resources: [],
+        expectedOutcome: 'Calculadora testada e funcional'
+      }
+    ],
+    portfolioValue: 'medium',
+    portfolioDescription: 'Demonstra compreensão de estruturas de dados e operações matemáticas',
+    prerequisites: ['math-fundamentals'],
+    resources: [
+      { title: 'Frações - Khan Academy', url: 'https://www.khanacademy.org/math/arithmetic/fraction-arithmetic', type: 'tutorial' },
+      { title: 'MDC - Algoritmo de Euclides', url: 'https://pt.wikipedia.org/wiki/Algoritmo_de_Euclides', type: 'article' }
+    ],
+    successCriteria: [
+      'Todas as operações funcionam corretamente',
+      'Frações são simplificadas automaticamente',
+      'Código bem documentado',
+      'Testes passam com sucesso'
+    ],
+    bonus: [
+      'Implemente conversão para decimal',
+      'Crie visualização gráfica de frações',
+      'Adicione suporte a números mistos',
+      'Implemente comparação de frações'
+    ]
+  },
+  'math-derivadas': {
+    id: 'math-derivadas',
+    title: 'Calculadora de Derivadas',
+    description: 'Implemente um sistema de diferenciação simbólica que calcula derivadas de funções polinomiais.',
+    shortDescription: 'Diferenciação simbólica',
+    type: 'intermediate',
+    category: 'math',
+    stage: 3,
+    difficulty: 'intermediate',
+    estimatedHours: 12,
+    technologies: ['Python', 'SymPy', 'NumPy'],
+    learningObjectives: [
+      'Entender regras de derivação',
+      'Implementar diferenciação simbólica',
+      'Trabalhar com expressões matemáticas',
+      'Otimizar funções'
+    ],
+    activities: [
+      {
+        id: 'math-der-1',
+        title: 'Representação de Expressões',
+        description: 'Crie estrutura para representar expressões matemáticas',
+        type: 'exercise',
+        difficulty: 'medium',
+        estimatedHours: 3,
+        tasks: [
+          { id: 't1', title: 'Classe Expression', description: 'Crie classe base para expressões', completed: false, estimatedHours: 1.5 },
+          { id: 't2', title: 'Subclasses', description: 'Crie subclasses para diferentes tipos', completed: false, estimatedHours: 1.5 }
+        ],
+        resources: [],
+        expectedOutcome: 'Hierarquia de classes para expressões'
+      },
+      {
+        id: 'math-der-2',
+        title: 'Regras de Derivação',
+        description: 'Implemente as principais regras de derivação',
+        type: 'challenge',
+        difficulty: 'hard',
+        estimatedHours: 5,
+        tasks: [
+          { id: 't3', title: 'Regra da Potência', description: 'Implemente d/dx(x^n)', completed: false, estimatedHours: 1 },
+          { id: 't4', title: 'Regra do Produto', description: 'Implemente (f*g)\' = f\'*g + f*g\'', completed: false, estimatedHours: 1.5 },
+          { id: 't5', title: 'Regra da Cadeia', description: 'Implemente (f(g(x)))\'', completed: false, estimatedHours: 1.5 },
+          { id: 't6', title: 'Regra do Quociente', description: 'Implemente (f/g)\'', completed: false, estimatedHours: 1 }
+        ],
+        resources: [],
+        expectedOutcome: 'Todas as regras funcionando'
+      },
+      {
+        id: 'math-der-3',
+        title: 'Otimizador',
+        description: 'Use derivadas para encontrar máximos e mínimos',
+        type: 'practice',
+        difficulty: 'hard',
+        estimatedHours: 3,
+        tasks: [
+          { id: 't7', title: 'Encontrar críticos', description: 'Encontre pontos críticos', completed: false, estimatedHours: 1.5 },
+          { id: 't8', title: 'Classificar', description: 'Classifique como máximo ou mínimo', completed: false, estimatedHours: 1.5 }
+        ],
+        resources: [],
+        expectedOutcome: 'Otimizador funcional'
+      }
+    ],
+    portfolioValue: 'high',
+    portfolioDescription: 'Projeto avançado que demonstra domínio de cálculo e programação orientada a objetos',
+    prerequisites: ['math-calculus-1', 'programming-oop'],
+    resources: [
+      { title: 'SymPy Documentation', url: 'https://docs.sympy.org/', type: 'documentation' },
+      { title: 'Calculus - Khan Academy', url: 'https://www.khanacademy.org/math/calculus-1', type: 'tutorial' }
+    ],
+    successCriteria: [
+      'Calcula derivadas corretamente',
+      'Encontra máximos e mínimos',
+      'Código bem estruturado',
+      'Testes abrangentes'
+    ],
+    bonus: [
+      'Implemente derivadas parciais',
+      'Crie visualização de derivadas',
+      'Implemente série de Taylor',
+      'Adicione suporte a funções trigonométricas'
+    ]
+  },
+  'math-algebra-linear': {
+    id: 'math-algebra-linear',
+    title: 'Biblioteca de Álgebra Linear',
+    description: 'Implemente uma biblioteca completa de operações matriciais e álgebra linear.',
+    shortDescription: 'Operações com matrizes',
+    type: 'advanced',
+    category: 'math',
+    stage: 5,
+    difficulty: 'advanced',
+    estimatedHours: 16,
+    technologies: ['Python', 'NumPy', 'SciPy'],
+    learningObjectives: [
+      'Implementar operações matriciais',
+      'Calcular determinantes e inversas',
+      'Decompor matrizes (LU, QR, SVD)',
+      'Resolver sistemas lineares'
+    ],
+    activities: [
+      {
+        id: 'math-la-1',
+        title: 'Classe Matrix',
+        description: 'Crie classe para representar matrizes',
+        type: 'exercise',
+        difficulty: 'medium',
+        estimatedHours: 3,
+        tasks: [
+          { id: 't1', title: 'Construtor', description: 'Crie construtor da classe', completed: false, estimatedHours: 1 },
+          { id: 't2', title: 'Operações básicas', description: 'Implemente soma, subtração, multiplicação', completed: false, estimatedHours: 2 }
+        ],
+        resources: [],
+        expectedOutcome: 'Classe Matrix com operações básicas'
+      },
+      {
+        id: 'math-la-2',
+        title: 'Determinantes e Inversas',
+        description: 'Implemente cálculo de determinantes e matrizes inversas',
+        type: 'challenge',
+        difficulty: 'hard',
+        estimatedHours: 4,
+        tasks: [
+          { id: 't3', title: 'Determinante', description: 'Implemente cálculo de determinante', completed: false, estimatedHours: 2 },
+          { id: 't4', title: 'Inversa', description: 'Implemente cálculo de matriz inversa', completed: false, estimatedHours: 2 }
+        ],
+        resources: [],
+        expectedOutcome: 'Determinantes e inversas funcionando'
+      },
+      {
+        id: 'math-la-3',
+        title: 'Decomposições',
+        description: 'Implemente decomposições LU, QR e SVD',
+        type: 'practice',
+        difficulty: 'hard',
+        estimatedHours: 5,
+        tasks: [
+          { id: 't5', title: 'Decomposição LU', description: 'Implemente LU', completed: false, estimatedHours: 1.5 },
+          { id: 't6', title: 'Decomposição QR', description: 'Implemente QR', completed: false, estimatedHours: 2 },
+          { id: 't7', title: 'Decomposição SVD', description: 'Implemente SVD', completed: false, estimatedHours: 1.5 }
+        ],
+        resources: [],
+        expectedOutcome: 'Todas as decomposições funcionando'
+      },
+      {
+        id: 'math-la-4',
+        title: 'Sistemas Lineares',
+        description: 'Use decomposições para resolver sistemas',
+        type: 'buildup',
+        difficulty: 'hard',
+        estimatedHours: 4,
+        tasks: [
+          { id: 't8', title: 'Solver LU', description: 'Resolva sistema usando LU', completed: false, estimatedHours: 2 },
+          { id: 't9', title: 'Testes', description: 'Teste com sistemas conhecidos', completed: false, estimatedHours: 2 }
+        ],
+        resources: [],
+        expectedOutcome: 'Solver de sistemas lineares'
+      }
+    ],
+    portfolioValue: 'high',
+    portfolioDescription: 'Projeto profissional que demonstra domínio de álgebra linear computacional',
+    prerequisites: ['math-linear-algebra', 'programming-advanced'],
+    resources: [
+      { title: 'NumPy Linear Algebra', url: 'https://numpy.org/doc/stable/reference/routines.linalg.html', type: 'documentation' },
+      { title: '3Blue1Brown - Essence of Linear Algebra', url: 'https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab', type: 'video' }
+    ],
+    successCriteria: [
+      'Todas as operações funcionam corretamente',
+      'Decomposições implementadas corretamente',
+      'Sistemas lineares resolvidos com precisão',
+      'Código otimizado e bem documentado'
+    ],
+    bonus: [
+      'Implemente autovalores e autovetores',
+      'Crie visualizações de transformações',
+      'Implemente PCA',
+      'Adicione suporte a matrizes esparsas'
+    ]
+  },
+  'math-ml-pipeline': {
+    id: 'math-ml-pipeline',
+    title: 'Pipeline de Machine Learning',
+    description: 'Crie um pipeline completo de ML com regressão, classificação e clustering.',
+    shortDescription: 'Aprendizado de máquina',
+    type: 'portfolio',
+    category: 'math',
+    stage: 8,
+    difficulty: 'advanced',
+    estimatedHours: 20,
+    technologies: ['Python', 'Scikit-learn', 'Pandas', 'Matplotlib'],
+    learningObjectives: [
+      'Implementar algoritmos de ML',
+      'Processar e preparar dados',
+      'Avaliar modelos',
+      'Otimizar hiperparâmetros'
+    ],
+    activities: [
+      {
+        id: 'math-ml-1',
+        title: 'Preparação de Dados',
+        description: 'Carregue, limpe e prepare dados',
+        type: 'exercise',
+        difficulty: 'medium',
+        estimatedHours: 4,
+        tasks: [
+          { id: 't1', title: 'Carregar dados', description: 'Carregue dataset', completed: false, estimatedHours: 1 },
+          { id: 't2', title: 'Limpeza', description: 'Trate valores faltantes', completed: false, estimatedHours: 1.5 },
+          { id: 't3', title: 'Normalização', description: 'Normalize features', completed: false, estimatedHours: 1.5 }
+        ],
+        resources: [],
+        expectedOutcome: 'Dados prontos para ML'
+      },
+      {
+        id: 'math-ml-2',
+        title: 'Modelos de Regressão',
+        description: 'Implemente regressão linear e não-linear',
+        type: 'challenge',
+        difficulty: 'hard',
+        estimatedHours: 5,
+        tasks: [
+          { id: 't4', title: 'Regressão Linear', description: 'Implemente regressão linear', completed: false, estimatedHours: 2 },
+          { id: 't5', title: 'Regressão Polinomial', description: 'Implemente regressão polinomial', completed: false, estimatedHours: 1.5 },
+          { id: 't6', title: 'Validação', description: 'Valide modelos', completed: false, estimatedHours: 1.5 }
+        ],
+        resources: [],
+        expectedOutcome: 'Modelos de regressão funcionando'
+      },
+      {
+        id: 'math-ml-3',
+        title: 'Classificação',
+        description: 'Implemente classificadores',
+        type: 'practice',
+        difficulty: 'hard',
+        estimatedHours: 5,
+        tasks: [
+          { id: 't7', title: 'Regressão Logística', description: 'Implemente classificação binária', completed: false, estimatedHours: 2 },
+          { id: 't8', title: 'SVM', description: 'Implemente SVM', completed: false, estimatedHours: 1.5 },
+          { id: 't9', title: 'Avaliação', description: 'Calcule métricas (precisão, recall, F1)', completed: false, estimatedHours: 1.5 }
+        ],
+        resources: [],
+        expectedOutcome: 'Classificadores funcionando'
+      },
+      {
+        id: 'math-ml-4',
+        title: 'Clustering',
+        description: 'Implemente algoritmos de clustering',
+        type: 'buildup',
+        difficulty: 'hard',
+        estimatedHours: 4,
+        tasks: [
+          { id: 't10', title: 'K-Means', description: 'Implemente K-Means', completed: false, estimatedHours: 2 },
+          { id: 't11', title: 'Visualização', description: 'Visualize clusters', completed: false, estimatedHours: 2 }
+        ],
+        resources: [],
+        expectedOutcome: 'Pipeline completo de ML'
+      }
+    ],
+    portfolioValue: 'high',
+    portfolioDescription: 'Projeto profissional essencial para cientistas de dados',
+    prerequisites: ['math-statistics', 'math-linear-algebra', 'programming-python'],
+    resources: [
+      { title: 'Scikit-learn Documentation', url: 'https://scikit-learn.org/stable/', type: 'documentation' },
+      { title: 'Andrew Ng - Machine Learning', url: 'https://www.coursera.org/learn/machine-learning', type: 'tutorial' }
+    ],
+    successCriteria: [
+      'Pipeline completo funcionando',
+      'Modelos treinados com sucesso',
+      'Métricas calculadas corretamente',
+      'Visualizações claras e informativas'
+    ],
+    bonus: [
+      'Implemente validação cruzada',
+      'Otimize hiperparâmetros com GridSearch',
+      'Crie ensemble de modelos',
+      'Implemente deep learning com TensorFlow'
     ]
   }
 };

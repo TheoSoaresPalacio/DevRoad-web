@@ -19,6 +19,7 @@ const categoryLabels: Record<ProjectCategory, string> = {
   java: 'Java & POO',
   backend: 'Back-End',
   english: 'Inglês',
+  math: 'Matemática',
   fullstack: 'Full-Stack'
 };
 

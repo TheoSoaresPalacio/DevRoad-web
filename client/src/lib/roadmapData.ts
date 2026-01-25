@@ -1,5 +1,5 @@
 import React from "react";
-import { Zap, Code2, Database, Settings, BookOpen, GitBranch, Layers, Globe, Users, Headphones, FileText, Briefcase } from "lucide-react";
+import { Zap, Code2, Database, Settings, BookOpen, GitBranch, Layers, Globe, Users, Headphones, FileText, Briefcase, Calculator, TrendingUp } from "lucide-react";
 
 export interface Project {
   id: string;
@@ -624,8 +624,253 @@ export const englishTrail: Trail = {
   ],
 };
 
+// TRILHA 4: MATEMÁTICA
+export const mathTrail: Trail = {
+  id: "math",
+  name: "Matemática: Do Básico ao Avançado Computacional",
+  description: "Domine matemática desde fundamentos até computação científica para cientistas e cientistas de dados",
+  duration: "40-50 semanas",
+  difficulty: "Iniciante → Avançado",
+  color: "#7C3AED",
+  iconName: "Calculator",
+  stages: [
+    {
+      id: 0,
+      title: "Fundamentos Matemáticos",
+      description: "Aritmética avançada, teoria dos números e lógica",
+      difficulty: "Iniciante",
+      concepts: ["Aritmética", "Números Primos", "Conjuntos", "Lógica Proposicional"],
+      projects: [
+        {
+          id: "math-0.1",
+          name: "Calculadora de Frações",
+          description: "Implemente operações com frações",
+          tasks: 4,
+          completed: 0,
+        },
+        {
+          id: "math-0.2",
+          name: "Verificador de Primos",
+          description: "Algoritmo para identificar números primos",
+          tasks: 3,
+          completed: 0,
+        },
+      ],
+      color: "#7C3AED",
+      iconName: "Calculator",
+    },
+    {
+      id: 1,
+      title: "Álgebra Fundamental",
+      description: "Equações lineares, polinômios e funções",
+      difficulty: "Iniciante",
+      concepts: ["Equações Lineares", "Polinômios", "Funções", "Sistemas Lineares"],
+      projects: [
+        {
+          id: "math-1.1",
+          name: "Resolvedor de Equações",
+          description: "Implemente método de Gauss",
+          tasks: 4,
+          completed: 0,
+        },
+        {
+          id: "math-1.2",
+          name: "Visualizador de Funções",
+          description: "Plote gráficos de funções",
+          tasks: 3,
+          completed: 0,
+        },
+      ],
+      color: "#8B5CF6",
+      iconName: "BookOpen",
+    },
+    {
+      id: 2,
+      title: "Geometria e Trigonometria",
+      description: "Geometria euclidiana, trigonometria e geometria analítica",
+      difficulty: "Intermediário",
+      concepts: ["Geometria Euclidiana", "Trigonometria", "Cônicas", "Geometria Analítica"],
+      projects: [
+        {
+          id: "math-2.1",
+          name: "Calculadora Trigonométrica",
+          description: "Implemente funções trigonométricas",
+          tasks: 4,
+          completed: 0,
+        },
+        {
+          id: "math-2.2",
+          name: "Visualizador de Cônicas",
+          description: "Plote e analise cônicas",
+          tasks: 3,
+          completed: 0,
+        },
+      ],
+      color: "#A78BFA",
+      iconName: "Layers",
+    },
+    {
+      id: 3,
+      title: "Cálculo Diferencial",
+      description: "Limites, derivadas e análise de funções",
+      difficulty: "Intermediário",
+      concepts: ["Limites", "Derivadas", "Regras de Derivação", "Otimização"],
+      projects: [
+        {
+          id: "math-3.1",
+          name: "Calculadora de Derivadas",
+          description: "Implemente diferenciação simbólica",
+          tasks: 4,
+          completed: 0,
+        },
+        {
+          id: "math-3.2",
+          name: "Otimizador de Funções",
+          description: "Encontre máximos e mínimos",
+          tasks: 3,
+          completed: 0,
+        },
+      ],
+      color: "#C4B5FD",
+      iconName: "TrendingUp",
+    },
+    {
+      id: 4,
+      title: "Cálculo Integral",
+      description: "Antiderivadas, integrais definidas e aplicações",
+      difficulty: "Intermediário",
+      concepts: ["Antiderivadas", "Integrais Definidas", "Teorema Fundamental", "Aplicações"],
+      projects: [
+        {
+          id: "math-4.1",
+          name: "Calculadora de Integrais",
+          description: "Implemente integração numérica",
+          tasks: 4,
+          completed: 0,
+        },
+        {
+          id: "math-4.2",
+          name: "Calculador de Áreas",
+          description: "Calcule áreas sob curvas",
+          tasks: 3,
+          completed: 0,
+        },
+      ],
+      color: "#DDD6FE",
+      iconName: "BookOpen",
+    },
+    {
+      id: 5,
+      title: "Álgebra Linear",
+      description: "Matrizes, determinantes, espaços vetoriais e autovalores",
+      difficulty: "Intermediário",
+      concepts: ["Matrizes", "Determinantes", "Espaços Vetoriais", "Autovalores"],
+      projects: [
+        {
+          id: "math-5.1",
+          name: "Biblioteca de Álgebra Linear",
+          description: "Implemente operações matriciais",
+          tasks: 5,
+          completed: 0,
+        },
+        {
+          id: "math-5.2",
+          name: "Analisador de Dados",
+          description: "Aplique PCA com autovalores",
+          tasks: 4,
+          completed: 0,
+        },
+      ],
+      color: "#7C3AED",
+      iconName: "Database",
+    },
+    {
+      id: 6,
+      title: "Probabilidade e Estatística",
+      description: "Probabilidade, distribuições e inferência estatística",
+      difficulty: "Intermediário",
+      concepts: ["Probabilidade", "Distribuições", "Estatística Descritiva", "Testes de Hipótese"],
+      projects: [
+        {
+          id: "math-6.1",
+          name: "Simulador de Probabilidade",
+          description: "Monte Carlo simulations",
+          tasks: 4,
+          completed: 0,
+        },
+        {
+          id: "math-6.2",
+          name: "Analisador Estatístico",
+          description: "Análise completa de datasets",
+          tasks: 4,
+          completed: 0,
+        },
+      ],
+      color: "#8B5CF6",
+      iconName: "TrendingUp",
+    },
+    {
+      id: 7,
+      title: "Análise Matemática Avançada",
+      description: "Séries, equações diferenciais, análise complexa e otimização",
+      difficulty: "Avançado",
+      concepts: ["Sequências e Séries", "EDO", "Análise Complexa", "Otimização"],
+      projects: [
+        {
+          id: "math-7.1",
+          name: "Resolvedor de EDO",
+          description: "Métodos numéricos para EDO",
+          tasks: 5,
+          completed: 0,
+        },
+        {
+          id: "math-7.2",
+          name: "Otimizador Avançado",
+          description: "Implementar algoritmos de otimização",
+          tasks: 4,
+          completed: 0,
+        },
+      ],
+      color: "#A78BFA",
+      iconName: "Settings",
+    },
+    {
+      id: 8,
+      title: "Matemática Computacional",
+      description: "Métodos numéricos, ML, processamento de sinais e computação científica",
+      difficulty: "Avançado",
+      concepts: ["Métodos Numéricos", "Aprendizado de Máquina", "Processamento de Sinais", "Computação Científica"],
+      projects: [
+        {
+          id: "math-8.1",
+          name: "Biblioteca de Métodos Numéricos",
+          description: "Implementar algoritmos clássicos",
+          tasks: 5,
+          completed: 0,
+        },
+        {
+          id: "math-8.2",
+          name: "Pipeline de ML",
+          description: "Regressão, classificação, clustering",
+          tasks: 5,
+          completed: 0,
+        },
+        {
+          id: "math-8.3",
+          name: "Simulador Científico",
+          description: "Modelagem de fenômenos físicos",
+          tasks: 4,
+          completed: 0,
+        },
+      ],
+      color: "#C4B5FD",
+      iconName: "Code2",
+    },
+  ],
+};
+
 // Todas as trilhas
-export const allTrails: Trail[] = [javaTrail, backendTrail, englishTrail];
+export const allTrails: Trail[] = [javaTrail, backendTrail, englishTrail, mathTrail];
 
 // Função para obter trilha por ID
 export function getTrailById(id: string): Trail | undefined {
@@ -668,4 +913,42 @@ export function getIconByName(iconName: string) {
     Briefcase: "Briefcase",
   };
   return iconMap[iconName] || "Code2";
+}
+
+// Adicionar Calculator e TrendingUp ao mapa de ícones
+const extendedIconMap: { [key: string]: string } = {
+  Zap: "Zap",
+  Code2: "Code2",
+  Database: "Database",
+  Settings: "Settings",
+  BookOpen: "BookOpen",
+  GitBranch: "GitBranch",
+  Layers: "Layers",
+  Globe: "Globe",
+  Users: "Users",
+  Headphones: "Headphones",
+  FileText: "FileText",
+  Briefcase: "Briefcase",
+  Calculator: "Calculator",
+  TrendingUp: "TrendingUp",
+};
+
+export function getIconComponent(iconName: string) {
+  const icons: { [key: string]: any } = {
+    Zap,
+    Code2,
+    Database,
+    Settings,
+    BookOpen,
+    GitBranch,
+    Layers,
+    Globe,
+    Users,
+    Headphones,
+    FileText,
+    Briefcase,
+    Calculator,
+    TrendingUp,
+  };
+  return icons[iconName] || Code2
 }
