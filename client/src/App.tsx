@@ -5,16 +5,20 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { ProgressProvider } from "./contexts/ProgressContext";
+import { AchievementProvider } from "./contexts/AchievementContext";
+import AchievementNotification from "./components/AchievementNotification";
 import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetail";
+import Achievements from "./pages/Achievements";
 
 
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/project/:id" component={ProjectDetail} />
-      <Route path="/404" component={NotFound} />
+      <Route path={"/"} component={Home} />
+      <Route path={"/project/:id"} component={ProjectDetail} />
+      <Route path={"/achievements"} component={Achievements} />
+      <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
@@ -34,10 +38,13 @@ function App() {
         // switchable
       >
         <ProgressProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Router />
-          </TooltipProvider>
+          <AchievementProvider>
+            <TooltipProvider>
+              <Toaster />
+              <Router />
+              <AchievementNotification />
+            </TooltipProvider>
+          </AchievementProvider>
         </ProgressProvider>
       </ThemeProvider>
     </ErrorBoundary>

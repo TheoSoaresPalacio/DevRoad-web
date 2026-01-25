@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { ChevronRight, Code2, GitBranch, Layers, CheckCircle2, Clock, Lock, Zap, Database, Settings, BookOpen } from "lucide-react";
+import { ChevronRight, Code2, GitBranch, Layers, CheckCircle2, Clock, Lock, Zap, Database, Settings, BookOpen, Trophy } from "lucide-react";
 import { useState } from "react";
 import { Link } from "wouter";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from "recharts";
@@ -235,9 +235,17 @@ export default function Home() {
               <h1 className="font-display text-4xl text-gray-900">Java Complete Roadmap</h1>
               <p className="text-gray-600 mt-1">Do Básico ao Avançado - Programação Orientada a Objetos</p>
             </div>
-            <div className="text-right">
-              <div className="text-3xl font-bold text-blue-600">{Math.round(totalProgress)}%</div>
-              <p className="text-sm text-gray-600">Progresso Geral</p>
+            <div className="flex items-center gap-6">
+              <Link href="/achievements">
+                <Button variant="outline" className="flex items-center gap-2">
+                  <Trophy className="w-4 h-4" />
+                  Conquistas
+                </Button>
+              </Link>
+              <div className="text-right">
+                <div className="text-3xl font-bold text-blue-600">{Math.round(totalProgress)}%</div>
+                <p className="text-sm text-gray-600">Progresso Geral</p>
+              </div>
             </div>
           </div>
         </div>
@@ -254,9 +262,11 @@ export default function Home() {
               <div className="relative z-10 max-w-md">
                 <h2 className="font-display text-3xl text-gray-900 mb-4">Sua Jornada Completa em Java</h2>
                 <p className="text-gray-700 mb-6">Sete estágios progressivos que levam você do zero ao domínio de Programação Orientada a Objetos. Comece agora e acompanhe seu progresso!</p>
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-200">
-                  Começar do Estágio 0 <ChevronRight className="w-4 h-4 ml-2" />
-                </Button>
+                <Link href="/project/0.1">
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-200">
+                    Começar do Estágio 0 <ChevronRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
               </div>
             </section>
 
