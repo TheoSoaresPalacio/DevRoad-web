@@ -32,7 +32,12 @@ export interface Resource {
   type: 'documentation' | 'tutorial' | 'article' | 'video';
 }
 
-export const conceptsData: Record<string, Concept> = {
+import { conceptsDataExpanded, allConceptsData } from './conceptsDataExpanded';
+
+export const conceptsData: Record<string, Concept> = allConceptsData;
+
+// Mantendo a estrutura original para compatibilidade
+export const conceptsDataOriginal: Record<string, Concept> = {
   // ==================== JAVA - FUNDAMENTOS ====================
   'java-intro': {
     id: 'java-intro',
