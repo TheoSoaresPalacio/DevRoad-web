@@ -2,11 +2,12 @@ import { useRoute } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Copy, Check, ExternalLink, BookOpen, Zap, Target } from 'lucide-react';
+import { ArrowLeft, Copy, Check, ExternalLink, BookOpen, Zap, Target, Home } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { getConceptById, getRelatedConcepts } from '@/lib/conceptsData';
 import CodeBlock from '@/components/CodeBlock';
 import { useNavigationHistory } from '@/hooks/useNavigationHistory';
+import { Link } from 'wouter';
 
 export default function ConceptDetail() {
   const [, params] = useRoute("/concept/:conceptId");
@@ -110,15 +111,24 @@ export default function ConceptDetail() {
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/10">
       <div className="container max-w-5xl mx-auto p-4 md:p-6">
         {/* Header com Navegação */}
-        <div className="mb-8">
+        <div className="mb-8 flex items-center gap-3">
           <Button
             variant="ghost"
             onClick={goBack}
-            className="mb-6 hover:bg-muted/50 transition-colors"
+            className="hover:bg-muted/50 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Voltar
           </Button>
+          <Link href="/">
+            <Button
+              variant="ghost"
+              className="hover:bg-muted/50 transition-colors"
+            >
+              <Home className="w-4 h-4 mr-2" />
+              Home
+            </Button>
+          </Link>
         </div>
 
         {/* Título e Metadados */}

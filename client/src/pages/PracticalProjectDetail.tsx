@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Checkbox } from '@/components/ui/checkbox';
-import { ArrowLeft, Clock, Target, BookOpen, ExternalLink, CheckCircle2, Circle } from 'lucide-react';
+import { ArrowLeft, Clock, Target, BookOpen, ExternalLink, CheckCircle2, Circle, Home } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { getProjectById } from '@/lib/projectsData';
 import ExternalIntegration from '@/components/ExternalIntegration';
@@ -81,10 +81,18 @@ export default function PracticalProjectDetail() {
     <div className="min-h-screen bg-background">
       <div className="container max-w-4xl mx-auto p-4">
         {/* Header */}
-        <Button variant="ghost" className="mb-6" onClick={goBack}>
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Voltar
-        </Button>
+        <div className="flex items-center gap-3 mb-6">
+          <Button variant="ghost" onClick={goBack}>
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Voltar
+          </Button>
+          <Link href="/">
+            <Button variant="ghost">
+              <Home className="w-4 h-4 mr-2" />
+              Home
+            </Button>
+          </Link>
+        </div>
 
         {/* Título e Metadados */}
         <div className="mb-8">

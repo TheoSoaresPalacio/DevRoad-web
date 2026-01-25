@@ -3,8 +3,10 @@ import { useNavigationHistory } from '@/hooks/useNavigationHistory';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, BookOpen, Target, Clock, Zap, ExternalLink } from 'lucide-react';
+
+import { ArrowLeft, BookOpen, Target, Clock, Zap, ExternalLink, Home } from 'lucide-react';
 import { getStageById, getStagesByTrail } from '@/lib/stagesData';
+import { resolveConceptId } from '@/lib/conceptMapping';
 
 
 export default function StageDetail() {
@@ -48,10 +50,18 @@ export default function StageDetail() {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 p-4">
       <div className="container max-w-4xl mx-auto">
-        <Button variant="ghost" className="mb-6" onClick={goBack}>
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Voltar
-        </Button>
+        <div className="flex items-center gap-3 mb-6">
+          <Button variant="ghost" onClick={goBack}>
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Voltar
+          </Button>
+          <Link href="/">
+            <Button variant="ghost">
+              <Home className="w-4 h-4 mr-2" />
+              Home
+            </Button>
+          </Link>
+        </div>
 
         {/* Header */}
         <div className="mb-8">
@@ -92,13 +102,16 @@ export default function StageDetail() {
             <h2 className="text-2xl font-bold">Tópicos Abordados</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {stage.topics.map((topic, idx) => (
-              <Link key={idx} href={`/concept/${topic}`}>
-                <Button variant="outline" className="justify-start w-full">
-                  {topic}
-                </Button>
-              </Link>
-            ))}
+            {stage.topics.map((topic, idx) => {
+              const conceptId = resolveConceptId(topic);
+              return (
+                <Link key={idx} href={`/concept/${conceptId}`}>
+                  <Button variant="outline" className="justify-start w-full">
+                    {topic}
+                  </Button>
+                </Link>
+              );
+            })}
           </div>
         </Card>
 
