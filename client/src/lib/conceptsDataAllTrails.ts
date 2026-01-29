@@ -424,7 +424,29 @@ store.subscribe(() => {
     relatedConcepts: ['frontend-react', 'frontend-javascript']
   },
 
-  // ==================== FULL-STACK ====================
+   // ==================== INGLÊS ====================
+  'english-business': {
+    id: 'english-business',
+    title: 'Inglês para Negócios',
+    description: 'Aprenda inglês profissional para ambiente corporativo',
+    difficulty: 'intermediate',
+    content: `## Inglês para Negócios\n\nVocabuário corporativo essencial para comunicação profissional.`,
+    examples: [{ title: 'Email', language: 'text', code: 'Subject: Meeting', explanation: 'Email profissional' }],
+    challenges: [{ id: 'eng-b-1', title: 'Vocab', description: 'Aprenda termos', difficulty: 'intermediate', hints: [] }],
+    resources: [{ title: 'Business English', url: 'https://www.englishclub.com/', type: 'tutorial' }],
+    relatedConcepts: []
+  },
+  'english-technical': {
+    id: 'english-technical',
+    title: 'Inglês Técnico para TI',
+    description: 'Vocabulário técnico de programação',
+    difficulty: 'intermediate',
+    content: `## Inglês Técnico\n\nTermos essenciais para programação e desenvolvimento.`,
+    examples: [{ title: 'Código', language: 'javascript', code: 'function add(a, b) { return a + b; }', explanation: 'Função em inglês' }],
+    challenges: [{ id: 'eng-t-1', title: 'Termos', description: 'Aprenda termos técnicos', difficulty: 'intermediate', hints: [] }],
+    resources: [{ title: 'Tech English', url: 'https://www.englishclub.com/', type: 'tutorial' }],
+    relatedConcepts: []
+  },
   'fullstack-deployment': {
     id: 'fullstack-deployment',
     title: 'Deploy de Aplicações Full-Stack',
@@ -742,107 +764,6 @@ Aplicações: compressão de imagens, recomendações.`,
   },
 
   // ==================== INGLÊS - AVANÇADO ====================
-  'english-business': {
-    id: 'english-business',
-    title: 'Inglês para Negócios',
-    description: 'Aprenda inglês profissional para comunicação empresarial',
-    difficulty: 'intermediate',
-    content: `# Inglês para Negócios
-
-Inglês profissional é essencial para comunicação em ambientes corporativos internacionais.
-
-## Vocabulário Empresarial
-
-### Reuniões
-- Meeting agenda: pauta da reunião
-- Action items: itens de ação
-- Follow-up: acompanhamento
-- Stakeholders: partes interessadas
-
-### Documentos
-- Proposal: proposta
-- Contract: contrato
-- Invoice: fatura
-- Report: relatório
-
-### Comunicação
-- Presentation: apresentação
-- Negotiation: negociação
-- Feedback: retroalimentação
-- Deadline: prazo
-
-## Expressões Úteis
-
-### Iniciando Reunião
-- "Let's get started"
-- "Thank you all for joining"
-- "Let's go over the agenda"
-
-### Apresentando Ideias
-- "I'd like to propose..."
-- "In my opinion..."
-- "Based on the data..."
-
-### Concordando/Discordando
-- "I agree with you"
-- "I see your point, but..."
-- "That's a good idea"
-
-## Email Profissional
-
-Estrutura básica:
-1. Saudação: Dear Mr./Ms. [Nome]
-2. Introdução: Reason for writing
-3. Corpo: Main information
-4. Conclusão: Call to action
-5. Fechamento: Best regards, [Nome]`,
-    examples: [
-      {
-        title: 'Email Profissional em Inglês',
-        language: 'text',
-        code: `Subject: Project Update - Q1 2024
-
-Dear Mr. Johnson,
-
-I hope this email finds you well. I'm writing to provide you with an update on our current project status.
-
-As discussed in our last meeting, we have completed the initial phase of development. The team has successfully implemented the core features and is now focusing on quality assurance.
-
-Key accomplishments:
-- Completed backend API development
-- Implemented user authentication
-- Deployed to staging environment
-
-Next steps:
-- Conduct comprehensive testing
-- Gather stakeholder feedback
-- Plan for production release
-
-Please let me know if you have any questions or concerns. I'm available for a call this week if needed.
-
-Best regards,
-John Smith
-Project Manager`,
-        explanation: 'Exemplo de email profissional bem estruturado.'
-      }
-    ],
-    challenges: [
-      {
-        id: 'english-bus-1',
-        title: 'Escrever Email Profissional',
-        description: 'Escreva um email em inglês propondo uma solução para um problema',
-        difficulty: 'medium',
-        hints: ['Use estrutura apropriada', 'Use vocabulário profissional', 'Seja claro e conciso'],
-        expectedOutput: 'Email profissional bem escrito'
-      }
-    ],
-    resources: [
-      { title: 'Business English', url: 'https://www.bbc.com/learningenglish/english/course/business', type: 'tutorial' },
-      { title: 'Corporate Communication', url: 'https://www.coursera.org/learn/business-english', type: 'tutorial' }
-    ],
-    relatedConcepts: ['english-grammar', 'english-vocabulary']
-  },
-
   'english-technical': {
     id: 'english-technical',
     title: 'Inglês Técnico para Programadores',

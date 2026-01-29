@@ -702,7 +702,8 @@ Após completar este estágio, você estará pronto para trabalhar como desenvol
 };
 
 export function getStageById(id: string): Stage | undefined {
-  return stagesData[id];
+  const allStages = { ...stagesData };
+  return allStages[id];
 }
 
 export function getStagesByTrail(trailId: string): Stage[] {
