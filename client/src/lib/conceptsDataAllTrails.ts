@@ -432,7 +432,7 @@ store.subscribe(() => {
     difficulty: 'intermediate',
     content: `## Inglês para Negócios\n\nVocabuário corporativo essencial para comunicação profissional.`,
     examples: [{ title: 'Email', language: 'text', code: 'Subject: Meeting', explanation: 'Email profissional' }],
-    challenges: [{ id: 'eng-b-1', title: 'Vocab', description: 'Aprenda termos', difficulty: 'intermediate', hints: [] }],
+    challenges: [{ id: 'eng-b-1', title: 'Vocab', description: 'Aprenda termos', difficulty: 'easy', hints: [] }],
     resources: [{ title: 'Business English', url: 'https://www.englishclub.com/', type: 'tutorial' }],
     relatedConcepts: []
   },
@@ -443,7 +443,7 @@ store.subscribe(() => {
     difficulty: 'intermediate',
     content: `## Inglês Técnico\n\nTermos essenciais para programação e desenvolvimento.`,
     examples: [{ title: 'Código', language: 'javascript', code: 'function add(a, b) { return a + b; }', explanation: 'Função em inglês' }],
-    challenges: [{ id: 'eng-t-1', title: 'Termos', description: 'Aprenda termos técnicos', difficulty: 'intermediate', hints: [] }],
+    challenges: [{ id: 'eng-t-1', title: 'Termos', description: 'Aprenda termos técnicos', difficulty: 'medium', hints: [] }],
     resources: [{ title: 'Tech English', url: 'https://www.englishclub.com/', type: 'tutorial' }],
     relatedConcepts: []
   },
@@ -761,136 +761,5 @@ Aplicações: compressão de imagens, recomendações.`,
       { title: '3Blue1Brown Linear Algebra', url: 'https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab', type: 'video' }
     ],
     relatedConcepts: ['math-algebra', 'math-calculus']
-  },
-
-  // ==================== INGLÊS - AVANÇADO ====================
-  'english-technical': {
-    id: 'english-technical',
-    title: 'Inglês Técnico para Programadores',
-    description: 'Aprenda inglês técnico para documentação e comunicação em projetos',
-    difficulty: 'intermediate',
-    content: `# Inglês Técnico para Programadores
-
-Inglês técnico é crucial para ler documentação, contribuir em projetos open-source e se comunicar com equipes internacionais.
-
-## Vocabulário Técnico
-
-### Desenvolvimento
-- Bug: erro no código
-- Feature: funcionalidade
-- Refactor: reorganizar código
-- Deploy: colocar em produção
-- Debug: encontrar e corrigir erros
-- Commit: salvar alterações
-
-### Documentação
-- README: arquivo de leitura obrigatória
-- API documentation: documentação da interface
-- Code review: revisão de código
-- Pull request: solicitação para mesclar código
-
-### Infraestrutura
-- Server: servidor
-- Database: banco de dados
-- Cloud: nuvem
-- Container: contêiner (Docker)
-- Load balancer: distribuidor de carga
-
-## Lendo Documentação
-
-Dicas para ler documentação técnica:
-1. Comece pelo overview
-2. Procure exemplos
-3. Leia o FAQ
-4. Consulte o API reference
-5. Procure por tutoriais
-
-## Escrevendo Código Limpo em Inglês
-
-### Nomes de Variáveis
-- ✓ getUserById
-- ✗ get_user_by_id (em JavaScript/Java)
-- ✗ getuser
-
-### Comentários
-\`\`\`java
-// Calculate the total price including tax
-double totalPrice = price * (1 + taxRate);
-
-// TODO: Implement error handling
-// FIXME: This algorithm is O(n²), needs optimization
-\`\`\`
-
-## Comunicação em Equipes
-
-### Relatando Bugs
-"I found a bug where the login button doesn't respond when clicked on mobile devices."
-
-### Sugerindo Melhorias
-"I think we should refactor this function to improve readability."
-
-### Pedindo Ajuda
-"Could you help me understand how this authentication flow works?"`,
-    examples: [
-      {
-        title: 'Documentação de Função',
-        language: 'java',
-        code: `/**
- * Calculates the total price of items in the shopping cart.
- * 
- * @param items List of items in the cart
- * @param taxRate The tax rate to apply (e.g., 0.1 for 10%)
- * @return The total price including tax
- * @throws IllegalArgumentException if taxRate is negative
- * 
- * Example:
- *   List<Item> items = Arrays.asList(new Item(10.0), new Item(20.0));
- *   double total = calculateTotal(items, 0.1); // Returns 33.0
- */
-public double calculateTotal(List<Item> items, double taxRate) {
-    if (taxRate < 0) {
-        throw new IllegalArgumentException("Tax rate cannot be negative");
-    }
-    
-    double subtotal = items.stream()
-        .mapToDouble(Item::getPrice)
-        .sum();
-    
-    return subtotal * (1 + taxRate);
-}`,
-        explanation: 'Documentação técnica bem estruturada em Javadoc.'
-      }
-    ],
-    challenges: [
-      {
-        id: 'english-tech-1',
-        title: 'Escrever Documentação Técnica',
-        description: 'Escreva documentação em inglês para uma função complexa',
-        difficulty: 'medium',
-        hints: ['Use Javadoc ou JSDoc', 'Inclua exemplos', 'Documente exceções'],
-        expectedOutput: 'Documentação técnica completa'
-      }
-    ],
-    resources: [
-      { title: 'Technical English', url: 'https://www.englishforwork.com/technical-english', type: 'tutorial' },
-      { title: 'Writing Technical Documentation', url: 'https://developers.google.com/tech-writing', type: 'documentation' }
-    ],
-    relatedConcepts: ['english-grammar', 'english-business']
   }
 };
-
-export function getTrailConcepts(trailId: string): Concept[] {
-  const trailPrefixes: Record<string, string> = {
-    'java': 'java-',
-    'backend': 'backend-',
-    'frontend': 'frontend-',
-    'fullstack': 'fullstack-',
-    'english': 'english-',
-    'math': 'math-'
-  };
-
-  const prefix = trailPrefixes[trailId];
-  if (!prefix) return [];
-
-  return Object.values(conceptsDataAllTrails).filter(c => c.id.startsWith(prefix));
-}
